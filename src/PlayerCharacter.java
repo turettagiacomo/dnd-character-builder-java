@@ -128,12 +128,15 @@ public class PlayerCharacter implements Serializable {
     }
     public void setRace(Race race) {
         this.race = race;
+        this.applyIntrinsicRacialTraits();
     }
     public void setCharacterClass(CharacterClass characterClass) {
         this.characterClass = characterClass;
+        this.applyIntrinsicClassTraits();
     }
     public void setBackground(Background background) {
         this.background = background;
+        this.applyIntrinsicBackgroundTraits();
     }
 
     // --- SETTER PHYSICAL ---
@@ -528,45 +531,77 @@ public class PlayerCharacter implements Serializable {
     }
 
     /**
-     * Aggregates and applies all features, proficiencies, and modifiers derived from
-     * the character's chosen Race, Class, and Background.
-     * This method must be called before calculating final combat stats.
+     * Applies all non-numerical intrinsic traits derived from the character's chosen race.
+     * This includes skill and equipment proficiencies, languages, resistances, and special racial features.
+     * It is designed to be called immediately upon race selection to ensure the character's internal
+     * state is consistently updated before subsequent interactive choices.
      */
-    public void applyAllBonuses() {
-        // --- RACE ---
-        this.race.applyResistances(this.resistances);
-        this.race.applyAdvantageSavingThrows(this.extraBonuses);
-        this.race.applyProficiencies(this.skillProficiencies);
-        this.race.applyWeaponProficiencies(this.weaponProficiencies);
-        this.race.applyArmorProficiencies(this.armorProficiencies);
-        this.race.applyToolsProficiencies(this.toolProficiencies);
-        this.race.applyKnownSpells(this.spells);
-        this.race.applyKnownLanguages(this.languages);
-        this.race.applyRacialBonuses(this.abilityScores);
-        this.race.applyExtraBonuses(this.extraBonuses);
-
-        // --- CHARACTER CLASS ---
-        this.characterClass.applyEquipment(this.inventory);
-        this.characterClass.applyArmor(this.armors);
-        this.characterClass.applyWeapons(this.weapons);
-        this.characterClass.applyClassBonuses(this.extraBonuses);
-        this.spellcastingAbility = this.characterClass.getSpellcastingAbility();
-        this.characterClass.applyResistances(this.resistances);
-        this.characterClass.applyProficiencySavingThrows(this.savingThrowsProficiencies);
-        this.characterClass.applyProficiencies(this.skillProficiencies);
-        this.characterClass.applyWeaponProficiencies(this.weaponProficiencies);
-        this.characterClass.applyArmorProficiencies(this.armorProficiencies);
-        this.characterClass.applyToolsProficiencies(this.toolProficiencies);
-        this.characterClass.applyKnownSpells(this.spells);
-        this.characterClass.applyKnownLanguages(this.languages);
-
-        // --- BACKGROUND ---
-        this.background.applyProficiencies(this.skillProficiencies);
-        this.background.applyLanguages(this.languages);
-        this.background.applyToolsProficiencies(this.toolProficiencies);
-        this.background.applyEquipment(this.inventory);
-        this.background.applyBonuses(this.extraBonuses);
+    public void applyIntrinsicRacialTraits(){
+        if (this.race != null) {
+            this.race.applyResistances(this.resistances);
+            this.race.applyAdvantageSavingThrows(this.extraBonuses);
+            this.race.applyProficiencies(this.skillProficiencies);
+            this.race.applyWeaponProficiencies(this.weaponProficiencies);
+            this.race.applyArmorProficiencies(this.armorProficiencies);
+            this.race.applyToolsProficiencies(this.toolProficiencies);
+            this.race.applyKnownSpells(this.spells);
+            this.race.applyKnownLanguages(this.languages);
+            this.race.applyExtraBonuses(this.extraBonuses);
+        }
     }
+
+    /**
+     * Applies all non-numerical intrinsic features derived from the character's chosen class.
+     * This populates the character's base equipment, saving throw proficiencies, spellcasting abilities,
+     * and class-specific traits. Calling this immediately upon class selection prevents overlapping
+     * or missing data during the interactive equipment selection phase.
+     */
+    public void applyIntrinsicClassTraits(){
+        if(this.characterClass != null) {
+            this.characterClass.applyEquipment(this.inventory);
+            this.characterClass.applyArmor(this.armors);
+            this.characterClass.applyWeapons(this.weapons);
+            this.characterClass.applyClassBonuses(this.extraBonuses);
+            this.characterClass.applyResistances(this.resistances);
+            this.characterClass.applyProficiencySavingThrows(this.savingThrowsProficiencies);
+            this.characterClass.applyProficiencies(this.skillProficiencies);
+            this.characterClass.applyWeaponProficiencies(this.weaponProficiencies);
+            this.characterClass.applyArmorProficiencies(this.armorProficiencies);
+            this.characterClass.applyToolsProficiencies(this.toolProficiencies);
+            this.characterClass.applyKnownSpells(this.spells);
+            this.characterClass.applyKnownLanguages(this.languages);
+            this.spellcastingAbility = this.characterClass.getSpellcastingAbility();
+        }
+    }
+
+    /**
+     * Applies all intrinsic features derived from the character's chosen background.
+     * This grants specific skill and tool proficiencies, bonus languages, and adds
+     * the starting background equipment and gold to the character's inventory.
+     */
+    public void applyIntrinsicBackgroundTraits(){
+        if(this.background != null) {
+            this.background.applyProficiencies(this.skillProficiencies);
+            this.background.applyLanguages(this.languages);
+            this.background.applyToolsProficiencies(this.toolProficiencies);
+            this.background.applyEquipment(this.inventory);
+            this.background.applyBonuses(this.extraBonuses);
+        }
+    }
+
+    /**
+     * Applies the final numerical modifiers and calculates the character's combat statistics.
+     * This includes racial ability score increases, maximum hit points, armor class, and initiative.
+     * This method MUST be called only at the end of the creation process, after the user
+     * has finalized their base ability scores.
+     */
+    public void applyFinalNumericalBonuses() {
+        if (this.race != null) {
+            this.race.applyRacialBonuses(this.abilityScores);
+        }
+        this.calculateFinalStats();
+    }
+
     public void calculateFinalStats() {
         this.proficiencyBonus = this.characterClass.getProficiencyBonus();
         calculateHitPoints();

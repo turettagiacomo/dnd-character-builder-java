@@ -927,8 +927,6 @@ public class App {
             }
         }
 
-        myPc.applyAllBonuses();
-
         String ownedArmor = null;
         boolean ownsShield = false;
         for (String armor : myPc.getArmors()) {
@@ -962,7 +960,7 @@ public class App {
             }
         }
 
-        myPc.calculateFinalStats();
+        myPc.applyFinalNumericalBonuses();
 
         MenuPrinter.printCharacter(myPc);
 
