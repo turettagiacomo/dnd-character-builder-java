@@ -1,35 +1,34 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Criminal extends Background{
     public Criminal() {
-        super("Criminale");
+        super("Criminal");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Furtività").setCompetenza(true);
-        mappaSkill.get("Inganno").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.STEALTH);
+        skillProficiencies.add(Skill.DECEPTION);
     }
 
     @Override
-    public void applicaCompetenzaStrumenti(ArrayList<String> strumentiProficiency) {
-        String[] items = {"Strumenti da ladro"};
-        addBonus(items, strumentiProficiency);
+    public void applyToolsProficiencies(List<String> toolsProficiencies) {
+        String[] items = {"Thieves' tools"};
+        addBonus(items, toolsProficiencies);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Piede di porco", "Abiti comuni scuri con cappuccio", "Borsa con 15 mo"};
-        addBonus(items, equipaggiamento);
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"Crowbar", "Dark common clothes with hood", "Pouch with 10gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Contatto Criminale (Hai un collegamento nella rete criminale)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("Criminal contact");
     }
 }

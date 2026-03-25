@@ -1,29 +1,28 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Noble extends Background{
     public Noble() {
-        super("Nobile");
+        super("Noble");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Storia").setCompetenza(true);
-        mappaSkill.get("Persuasione").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.HISTORY);
+        skillProficiencies.add(Skill.PERSUASION);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Abiti pregiati", "Anello con sigillo", "Pergamena con albero genealogico", "Borsa con 25 mo"};
-        addBonus(items, equipaggiamento);
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"Fine clothes", "Signet ring", "Scroll of pedigree", "Pouch with 25gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Posizione Privilegiata (Sei benvenuto nell'alta società)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("Position of privilege");
     }
 }

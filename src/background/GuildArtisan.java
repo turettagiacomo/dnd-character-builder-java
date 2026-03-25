@@ -1,29 +1,27 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class GuildArtisan extends Background{
     public GuildArtisan() {
-        super("Artigiano di gilda");
+        super("Guild Artisan");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Intuizione").setCompetenza(true);
-        mappaSkill.get("Persuasione").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.INSIGHT);
+        skillProficiencies.add(Skill.PERSUASION);
+    }
+    @Override
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"Letter of introduction from your guild", "Traveller's clothes", "Pouch with 15gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Lettera di presentazione della gilda", "Abiti da viaggiatore", "Borsa con 15 mo"};
-        addBonus(items, equipaggiamento);
-    }
-
-    @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Iscrizione alla Gilda (Accesso alle sale della gilda e supporto legale)");
+    public void applyBonuses(List<String> feature) {
+        feature.add("Guild membership");
     }
 }

@@ -1,36 +1,33 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Hermit extends Background{
     public Hermit() {
-        super("Eremita");
+        super("Hermit");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Medicina").setCompetenza(true);
-        mappaSkill.get("Religione").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.MEDICINE);
+        skillProficiencies.add(Skill.RELIGION);
+    }
+    @Override
+    public void applyToolsProficiencies(List<String> toolsProficiencies) {
+        String[] items = {"Herbalism kit"};
+        addBonus(items, toolsProficiencies);
+    }
+    @Override
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"Scrolls case stuffed full of notes of your studies or prayers", "Winter blanket",
+                "Common clothes", "Herbalism kit", "Pouch with 5gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaCompetenzaStrumenti(ArrayList<String> strumentiProficiency) {
-        String[] items = {"Borsa da erborista"};
-        addBonus(items, strumentiProficiency);
-    }
-
-    @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Custodia per pergamene piena di appunti", "Coperta invernale",
-                "Abiti comuni", "Borsa da erborista", "Borsa con 5 mo"};
-        addBonus(items, equipaggiamento);
-    }
-
-    @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Scoperta (Conosci un segreto unico o fondamentale del multiverso)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("Discovery");
     }
 }

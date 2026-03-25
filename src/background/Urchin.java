@@ -1,36 +1,35 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Urchin extends Background{
     public Urchin() {
-        super("Monello");
+        super("Urchin");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Rapidità di mano").setCompetenza(true);
-        mappaSkill.get("Furtività").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.SLEIGHT_OF_HAND);
+        skillProficiencies.add(Skill.STEALTH);
     }
 
     @Override
-    public void applicaCompetenzaStrumenti(ArrayList<String> strumentiProficiency) {
-        String[] items = {"Kit per il trucco", "Strumenti da ladro"};
-        addBonus(items, strumentiProficiency);
+    public void applyToolsProficiencies(List<String> toolsProficiencies) {
+        String[] items = {"Disguise kit", "Thieves' tools"};
+        addBonus(items, toolsProficiencies);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Coltellino", "Mappa della città in cui sei cresciuto", "Topolino domestico",
-                "Ricordo dei genitori", "Abiti comuni", "Borsa con 10 mo"};
-        addBonus(items, equipaggiamento);
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"Small knife", "Map of the city you grew up in", "Pet mouse",
+                "Token to remember your parents", "Common clothes", "Pouch with 10gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Segreti della Città (Conosci passaggi segreti e vie veloci in città)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("City secrets");
     }
 }

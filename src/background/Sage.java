@@ -1,29 +1,28 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Sage extends Background{
     public Sage() {
-        super("Saggio");
+        super("Sage");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Arcano").setCompetenza(true);
-        mappaSkill.get("Storia").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.ARCANA);
+        skillProficiencies.add(Skill.HISTORY);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Boccetta di inchiostro nero", "Pennino", "Coltellino", "Lettera di un collega morto", "Abiti comuni", "Borsa con 10 mo"};
-        addBonus(items, equipaggiamento);
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"Bottle of black ink", "Quill", "Small knife", "Letter from a dead colleague posing a question you have not yet been able to answer", "Common clothes", "Pouch with 10gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Ricercatore (Sai dove trovare le informazioni che non conosci)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("Researcher");
     }
 }

@@ -1,35 +1,33 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Soldier extends Background{
     public Soldier() {
-        super("Soldato");
+        super("Soldier");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Atletica").setCompetenza(true);
-        mappaSkill.get("Intimidire").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.ATHLETICS);
+        skillProficiencies.add(Skill.INTIMIDATION);
+    }
+
+    public void applyToolsProficiencies(List<String> toolsProficiencies) {
+        String[] items = {"Vehicles (land)"};
+        addBonus(items, toolsProficiencies);
     }
 
     @Override
-    public void applicaCompetenzaStrumenti(ArrayList<String> strumentiProficiency) {
-        String[] items = {"Veicoli terrestri"};
-        addBonus(items, strumentiProficiency);
+    public void applyEquipment(List<String> equipment) {
+        String[]  items = {"Insignia of rank", "A trophy taken from a fallen enemy", "A set of bone dice or deck of cards", "Common clothes", "Pouch with 10gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[]  items = {"Insegna di grado", "Trofeo di un nemico caduto", "Set di dadi o carte", "Abiti comuni", "Borsa con 10 mo"};
-        addBonus(items, equipaggiamento);
-    }
-
-    @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Grado Militare (I soldati fedeli alla tua organizzazione riconoscono la tua autorità)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("Military rank");
     }
 }

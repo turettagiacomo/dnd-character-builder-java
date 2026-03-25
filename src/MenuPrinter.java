@@ -1,183 +1,189 @@
 public class MenuPrinter {
 
-    public static final String[] RAZZE = {
-            "Dragonide", "Elfo", "Gnomo", "Mezzelfo", "Halfling",
-            "Mezzorco", "Umano", "Nano", "Tiefling"
+    public static final String[] RACES = {
+            "Dragonborn", "Elf", "Gnome", "Half-Elf", "Halfling",
+            "Half-Orc", "Human", "Dwarf", "Tiefling"
     };
 
-    public static final String[] SOTTORAZZE_ELFO = {"Elfo alto", "Elfo dei boschi", "Elfo oscuro"};
-    public static final String[] SOTTORAZZE_GNOMO= {"Gnomo delle foreste", "Gnomo delle rocce"};
-    public static final String[] SOTTORAZZE_HALFLING = {"Halfling piedelesto", "Halfling tozzo"};
-    public static final String[] SOTTORAZZE_NANO = {"Nano delle colline", "Nano delle montagne"};
-    public static final String[] CLASSI = {
-            "Barbaro", "Bardo", "Chierico", "Druido", "Guerriero", "Monaco",
-            "Paladino", "Ranger", "Ladro", "Stregone", "Warlock", "Mago"
+    public static final String[] ELF_SUBRACES = {"High Elf", "Wood Elf", "Dark Elf"};
+    public static final String[] GNOME_SUBRACES = {"Forest Gnome", "Rock Gnome"};
+    public static final String[] HALFLING_SUBRACES = {"Lightfoot", "Stout"};
+    public static final String[] DWARF_SUBRACES = {"Hill Dwarf", "Mountain Dwarf"};
+
+    public static final String[] CLASSES = {
+            "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk",
+            "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"
     };
 
-    public static final String[] SOTTOCLASSI_CHIERICO = {
-            "Knowledge domain", "Life domain", "Light domain", "Nature domain",
-            "Tempest domain", "Trickery domain", "War domain"
+    public static final String[] CLERIC_SUBCLASSES = {
+            "Knowledge Domain", "Life Domain", "Light Domain", "Nature Domain",
+            "Tempest Domain", "Trickery Domain", "War Domain"
     };
-    public static final String[] SOTTOCLASSI_STREGONE = {"Discendenza draconica", "Wild magic"};
-    public static final String[] SOTTOCLASSI_WARLOCK = {"The archfey", "The fiend", "The great old one"};
+    public static final String[] SORCERER_SUBCLASSES = {"Draconic Bloodline", "Wild Magic"};
+    public static final String[] WARLOCK_SUBCLASSES = {"The Archfey", "The Fiend", "The Great Old One"};
 
-
-    public static final String[] TRUCCHETTI_BARDO  = {
-            "Amicizia", "Beffa Crudele", "Colpo Accurato",
-            "Illusione Minore", "Luce", "Luci Danzanti",
-            "Mano Magica", "Messaggio", "Prestidigitazione",
-            "Riparare"
+    // --- SPELLS ---
+    public static final String[] BARD_CANTRIPS  = {
+            "Friends", "Vicious Mockery", "True Strike",
+            "Minor Illusion", "Light", "Dancing Lights",
+            "Mage Hand", "Message", "Prestidigitation", "Mending"
     };
-
-    public static final  String[] INCANTESIMI_BARDO_LVL1 = {
-            "Amicizia Animale", "Caduta Morbida", "Charme su Persone",
-            "Cura Ferite", "Identificare", "Individuazione Magico",
-            "Onda Tonante", "Parola Guaritrice", "Risata Incontenibile",
-            "Sonno"
+    public static final String[] BARD_SPELLS_LVL1 = {
+            "Animal Friendship", "Feather Fall", "Charm Person",
+            "Cure Wounds", "Identify", "Detect Magic", "Thunderwave",
+            "Healing Word", "Tasha's Hideous Laughter", "Sleep"
     };
 
-    public static final String[] TRUCCHETTI_CHIERICO = {
-            "Fiamma Sacra", "Guida", "Luce",
-            "Resistenza", "Riparare", "Risparmiare i Morenti",
-            "Taumaturgia"
+    public static final String[] CLERIC_CANTRIPS = {
+            "Sacred Flame", "Guidance", "Light", "Resistance",
+            "Mending", "Spare the Dying", "Thaumaturgy"
     };
-    public static final String[] INCANTESIMI_CHIERICO_LVL1 = {
-            "Benedizione", "Comando", "Cura Ferite", "Dardo Guida", "Individuazione Magico",
-            "Infliggi Ferite", "Parola Guaritrice", "Protezione Bene/Male", "Santuario", "Scudo della Fede"
-    };
-    public static final String[] TRUCCHETTI_DRUIDO = {
-            "Artificio Druidico", "Frusta di Spine", "Guida",
-            "Produrre Fiamma", "Randello Incantato", "Resistenza",
-            "Riparare", "Spruzzo Velenoso"
-    };
-    public static final String[] INCANTESIMI_DRUIDO_LVL1 = {
-            "Amicizia Animale", "Bacche Benefiche", "Cura Ferite",
-            "Individuazione Magico", "Intralciare", "Onda Tonante",
-            "Parola Guaritrice", "Parlare con Animali", "Purificare Cibo"
-    };
-    public static final String[] TRUCCHETTI_STREGONE = {
-            "Colpo Accurato", "Dardo di Fuoco", "Fiotto Acido",
-            "Illusione Minore", "Luce", "Luci Danzanti",
-            "Mano Magica", "Messaggio", "Prestidigitazione",
-            "Raggio di Gelo", "Riparare", "Spruzzo Velenoso",
-            "Stretta Folgorante", "Tocco Gelido"
-    };
-    public static final String[] INCANTESIMI_STREGONE_LVL1 = {
-            "Armatura Magica", "Caduta Morbida", "Charme su Persone",
-            "Dardo Incantato", "Immagine Silenziosa", "Mani Brucianti",
-            "Onda Tonante", "Scudo", "Sonno",
-            "Spruzzo Colorato"
-    };
-    public static final String[] TRUCCHETTI_WARLOCK = {
-            "Colpo Accurato", "Deflagrazione Occulta", "Illusione Minore",
-            "Mano Magica", "Prestidigitazione", "Spruzzo Velenoso",
-            "Tocco Gelido"
-    };
-    public static final String[] INCANTESIMI_WARLOCK_LVL1 = {
-            "Armatura di Agathys", "Braccia di Hadar", "Charme su Persone",
-            "Comprensione Linguaggi", "Esilio", "Incutere Paura",
-            "Malocchio", "Protezione Bene/Male", "Ritirata Rapida",
-            "Servitore Inosservato"
-    };
-    public static final String[] TRUCCHETTI_MAGO = {
-            "Colpo Accurato", "Dardo di Fuoco", "Fiotto Acido",
-            "Illusione Minore", "Luce", "Luci Danzanti",
-            "Mano Magica", "Messaggio", "Prestidigitazione",
-            "Raggio di Gelo", "Riparare", "Spruzzo Velenoso",
-            "Stretta Folgorante", "Tocco Gelido"
-    };
-    public static final String[] INCANTESIMI_MAGO_LVL1 = {
-            "Armatura Magica", "Caduta Morbida", "Charme su Persone",
-            "Dardo Incantato", "Identificare", "Immagine Silenziosa",
-            "Individuazione Magico", "Mani Brucianti", "Onda Tonante",
-            "Scudo", "Sonno"
-    };
-    public static final String[] LINGUE = {
-            "Comune", "Nanico", "Elfico", "Gigantico", "Gnomico",
-            "Goblin", "Halfling", "Orco", "Abissale", "Celestiale",
-            "Draconico", "Deep speech", "Infernale", "Primordiale",
-            "Silvano", "Non comune"
-    };
-    public static final String[] BACKGROUND = {
-            "Accolito", "Ciarlatano", "Criminale", "Intrattenitore",
-            "Eroe Popolare", "Artigiano di Gilda", "Eremita", "Nobile",
-            "Forestiero", "Saggio", "Marinaio", "Soldato", "Monello"
+    public static final String[] CLERIC_SPELLS_LVL1 = {
+            "Bless", "Command", "Cure Wounds", "Guiding Bolt",
+            "Detect Magic", "Inflict Wounds", "Healing Word",
+            "Protection from Evil and Good", "Sanctuary", "Shield of Faith"
     };
 
-    public static final String[] LISTA_CARATTERISTICHE = {
-            "Forza", "Destrezza", "Costituzione",
-            "Intelligenza", "Saggezza", "Carisma"
+    public static final String[] DRUID_CANTRIPS = {
+            "Druidcraft", "Thorn Whip", "Guidance", "Produce Flame",
+            "Shillelagh", "Resistance", "Mending", "Poison Spray"
+    };
+    public static final String[] DRUID_SPELLS_LVL1 = {
+            "Animal Friendship", "Goodberry", "Cure Wounds",
+            "Detect Magic", "Entangle", "Thunderwave", "Healing Word",
+            "Speak with Animals", "Purify Food and Drink"
     };
 
-    public static final String[] LISTA_ABILITA = {
-            "Acrobazia", "Addestrare animali", "Arcano", "Atletica",
-            "Furtività", "Indagare", "Inganno", "Intimidire",
-            "Intrattenere", "Intuizione", "Medicina", "Natura",
-            "Percezione", "Persuasione", "Rapidità di mano",
-            "Religione", "Sopravvivenza", "Storia"
+    public static final String[] SORCERER_CANTRIPS = {
+            "True Strike", "Fire Bolt", "Acid Splash", "Minor Illusion",
+            "Light", "Dancing Lights", "Mage Hand", "Message", "Prestidigitation",
+            "Ray of Frost", "Mending", "Poison Spray", "Shocking Grasp", "Chill Touch"
+    };
+    public static final String[] SORCERER_SPELLS_LVL1 = {
+            "Mage Armor", "Feather Fall", "Charm Person", "Magic Missile",
+            "Silent Image", "Burning Hands", "Thunderwave", "Shield", "Sleep",
+            "Color Spray"
     };
 
-    public static void printListaRazze() {
-        stampaInColonne(RAZZE);
+    public static final String[] WARLOCK_CANTRIPS = {
+            "True Strike", "Eldritch Blast", "Minor Illusion",
+            "Mage Hand", "Prestidigitation", "Poison Spray", "Chill Touch"
+    };
+    public static final String[] WARLOCK_SPELLS_LVL1 = {
+            "Armor of Agathys", "Arms of Hadar", "Charm Person",
+            "Comprehend Languages", "Expeditious Retreat", "Hellish Rebuke",
+            "Hex", "Protection from Evil and Good","Illusory Script", "Unseen Servant"
+    };
+
+    public static final String[] WIZARD_CANTRIPS = {
+            "True Strike", "Fire Bolt", "Acid Splash", "Minor Illusion",
+            "Light", "Dancing Lights", "Mage Hand", "Message",
+            "Prestidigitation", "Ray of Frost", "Mending", "Poison Spray",
+            "Shocking Grasp", "Chill Touch"
+    };
+    public static final String[] WIZARD_SPELLS_LVL1 = {
+            "Mage Armor", "Feather Fall", "Charm Person", "Magic Missile",
+            "Identify", "Silent Image", "Detect Magic", "Burning Hands",
+            "Thunderwave", "Shield", "Sleep"
+    };
+
+    public static final String[] LANGUAGES = {
+            "Common", "Dwarvish", "Elvish", "Giant", "Gnomish",
+            "Goblin", "Halfling", "Orc", "Abyssal", "Celestial",
+            "Draconic", "Deep Speech", "Infernal", "Primordial",
+            "Sylvan", "Undercommon"
+    };
+
+    public static final String[] BACKGROUNDS = {
+            "Acolyte", "Charlatan", "Criminal", "Entertainer",
+            "Folk Hero", "Guild Artisan", "Hermit", "Noble",
+            "Outlander", "Sage", "Sailor", "Soldier", "Urchin"
+    };
+
+    public static final String[] ABILITY_SCORES = {
+            "Strength", "Dexterity", "Constitution",
+            "Intelligence", "Wisdom", "Charisma"
+    };
+
+    public static final String[] SKILLS = {
+            "Acrobatics", "Animal Handling", "Arcana", "Athletics",
+            "Deception", "History", "Insight", "Intimidation",
+            "Investigation", "Medicine", "Nature", "Perception",
+            "Performance", "Persuasion", "Religion", "Sleight of Hand",
+            "Stealth", "Survival"
+    };
+    public static final String[] ARTISAN_TOOLS = {
+            "Alchemist's supplies", "Brewer's supplies", "Carpenter's tools",
+            "Cartographer's tools", "Cobbler's tools", "Cook's utensils",
+            "Glassblower's tools", "Jeweler's tools", "Leatherworker's tools",
+            "Mason's tools", "Painter's supplies", "Potter's tools",
+            "Smith's tools", "Tinker's tools", "Weaver's tools", "Woodcarver's tools"
+    };
+    public static final String[] GAMING_SETS = {
+            "Dice set", "Dragonchess set", "Playing card set", "Three-Dragon Ante set"
+    };
+    public static final String[] MUSICAL_INSTRUMENTS = {
+            "Bagpipes", "Drum", "Dulcimer", "Flute", "Lute",
+            "Lyre", "Horn", "Pan flute", "Shawm", "Viol"
+    };
+    public static final String[] CON_TOOLS = {
+            "Ten stoppered bottles", "A set of weighted dice",
+            "A deck of marked cards", "A signet ring of an imaginary duke"
+    };
+    public static final String[] ALIGNMENTS = {
+            "Lawful Good", "Neutral Good", "Chaotic Good",
+            "Lawful Neutral", "True Neutral", "Chaotic Neutral",
+            "Lawful Evil", "Neutral Evil", "Chaotic Evil"
+    };
+
+    // --- PRINT METHODS ---
+    public static void printRacesList() { printInColumns(RACES); }
+    public static void printElfSubraces() { printInColumns(ELF_SUBRACES); }
+    public static void printGnomeSubraces() { printInColumns(GNOME_SUBRACES); }
+    public static void printHalflingSubraces() { printInColumns(HALFLING_SUBRACES); }
+    public static void printDwarfSubraces() { printInColumns(DWARF_SUBRACES); }
+    public static void printClassesList() { printInColumns(CLASSES); }
+    public static void printClericSubclasses() { printInColumns(CLERIC_SUBCLASSES); }
+    public static void printSorcererSubclasses() { printInColumns(SORCERER_SUBCLASSES); }
+    public static void printWarlockSubclasses() { printInColumns(WARLOCK_SUBCLASSES); }
+    public static void printLanguagesList() { printInColumns(LANGUAGES); }
+    public static void printMusicalInstrumentsList() {
+        printInColumns(MUSICAL_INSTRUMENTS);
     }
-
-    public static void printListaSottorazzeElfo() {
-        stampaInColonne(SOTTORAZZE_ELFO);
+    public static void printArtisanToolsList() {
+        printInColumns(ARTISAN_TOOLS);
     }
-
-    public static void printListaSottorazzeGnomo() {
-        stampaInColonne(SOTTORAZZE_GNOMO);
+    public static void printConToolsList() {
+        printInColumns(CON_TOOLS);
     }
-
-    public static void printListaSottorazzeHalfling() {
-        stampaInColonne(SOTTORAZZE_HALFLING);
-    }
-
-    public static void printListaSottorazzeNano() {
-        stampaInColonne(SOTTORAZZE_NANO);
-    }
-
-    public static void printListaClassi() {
-        stampaInColonne(CLASSI);
-    }
-
-    public static void printListaSottoclassiChierico() {
-        stampaInColonne(SOTTOCLASSI_CHIERICO);
-    }
-
-    public static void printListaSottoclassiStregone() {
-        stampaInColonne(SOTTOCLASSI_STREGONE);
-    }
-
-    public static void printListaDiscendenzeDraconiche() {
+    public static void printBackgroundsList() { printInColumns(BACKGROUNDS); }
+    public static void printDraconicAncestries() {
         String format = "%-15s %-15s %s%n";
-        System.out.printf(format, "COLORE", "DANNO", "AREA SOFFIO");
+        System.out.printf(format, "COLOR", "DAMAGE TYPE", "BREATH WEAPON");
         System.out.println("-----------------------------------------------------");
-
-        System.out.printf(format, "Nero", "Acido", "1.5m x 9m linea");
-        System.out.printf(format, "Blu", "Fulmine", "1.5m x 9m linea");
-        System.out.printf(format, "Ottone", "Fuoco", "1.5m x 9m linea");
-        System.out.printf(format, "Bronzo", "Fulmine", "1.5m x 9m linea");
-        System.out.printf(format, "Rame", "Fuoco", "1.5m x 9m linea");
-        System.out.printf(format, "Oro", "Acido", "4.5m cono");
-        System.out.printf(format, "Verde", "Veleno", "4.5m cono");
-        System.out.printf(format, "Rosso", "Fuoco", "4.5m cono");
-        System.out.printf(format, "Argento", "Gelo", "4.5m cono");
-        System.out.printf(format, "Bianco", "Gelo", "4.5m cono");
+        System.out.printf(format, "Black", "Acid", "5 by 30 ft. line");
+        System.out.printf(format, "Blue", "Lightning", "5 by 30 ft. line");
+        System.out.printf(format, "Brass", "Fire", "5 by 30 ft. line");
+        System.out.printf(format, "Bronze", "Lightning", "5 by 30 ft. line");
+        System.out.printf(format, "Copper", "Fire", "5 by 30 ft. line");
+        System.out.printf(format, "Gold", "Acid", "15 ft. cone");
+        System.out.printf(format, "Green", "Poison", "15 ft. cone");
+        System.out.printf(format, "Red", "Fire", "15 ft. cone");
+        System.out.printf(format, "Silver", "Cold", "15 ft. cone");
+        System.out.printf(format, "White", "Cold", "15 ft. cone");
     }
 
-    public static void printListaSottoclassiWarlock() {
-        stampaInColonne(SOTTOCLASSI_WARLOCK);
-    }
-
-    private static void stampaIntestazioneArmi() {
+    // --- WEAPONS ---
+    private static void printWeaponHeader(String title) {
+        final int tableWidth = 71;
+        int padding = (tableWidth - title.length()) / 2;
+        System.out.println("\n" + " ".repeat(padding) + title.toUpperCase());
         String format = "%-20s %-18s %s%n";
-        System.out.printf(format, "NOME", "DANNO", "PROPRIETÀ");
+        System.out.printf(format, "NAME", "DAMAGE", "PROPERTIES");
         System.out.println("-----------------------------------------------------------------------");
     }
-
-    public static void printListaArmiSempliciMischia() {
-        stampaIntestazioneArmi();
+    public static void printSimpleMeleeWeapons() {
+        printWeaponHeader("Simple Melee Weapons");
         String format = "%-20s %-18s %s%n";
         System.out.printf(format, "Club", "1d4 bludgeoning", "Light");
         System.out.printf(format, "Dagger", "1d4 piercing", "Finesse, light, thrown (20/60)");
@@ -191,19 +197,17 @@ public class MenuPrinter {
         System.out.printf(format, "Spear", "1d6 piercing", "Thrown (20/60), versatile (1d8)");
         System.out.printf(format, "Unarmed strike", "1 bludgeoning", "-");
     }
-
-    public static void printListaArmiSempliciDistanza() {
+    public static void printSimpleRangedWeapons() {
+        printWeaponHeader("Simple Ranged Weapons");
         String format = "%-20s %-18s %s%n";
-        stampaIntestazioneArmi();
         System.out.printf(format, "Crossbow, light", "1d8 piercing", "Ammo (80/320), loading, two-handed");
         System.out.printf(format, "Dart", "1d4 piercing", "Finesse, thrown (20/60)");
         System.out.printf(format, "Shortbow", "1d6 piercing", "Ammo (80/320), two-handed");
         System.out.printf(format, "Sling", "1d4 bludgeoning", "Ammo (30/120)");
     }
-
-    public static void printListaArmiMarzialiMischia() {
+    public static void printMartialMeleeWeapons() {
+        printWeaponHeader("Martial Melee Weapons");
         String format = "%-20s %-18s %s%n";
-        stampaIntestazioneArmi();
         System.out.printf(format, "Battleaxe", "1d8 slashing", "Versatile (1d10)");
         System.out.printf(format, "Flail", "1d8 bludgeoning", "-");
         System.out.printf(format, "Glaive", "1d10 slashing", "Heavy, reach, two-handed");
@@ -223,10 +227,9 @@ public class MenuPrinter {
         System.out.printf(format, "Warhammer", "1d8 bludgeoning", "Versatile (1d10)");
         System.out.printf(format, "Whip", "1d4 slashing", "Finesse, reach");
     }
-
-    public static void printListaArmiMarzialiDistanza() {
+    public static void printMartialRangedWeapons() {
+        printWeaponHeader("Martial Ranged Weapons");
         String format = "%-20s %-18s %s%n";
-        stampaIntestazioneArmi();
         System.out.printf(format, "Blowgun", "1 piercing", "Ammo (25/100), loading");
         System.out.printf(format, "Crossbow, hand", "1d6 piercing", "Ammo (30/120), light, loading");
         System.out.printf(format, "Crossbow, heavy", "1d10 piercing", "Ammo (100/400), heavy, loading, 2H");
@@ -234,201 +237,171 @@ public class MenuPrinter {
         System.out.printf(format, "Net", "-", "Special, thrown (5/15)");
     }
 
-    private static void stampaIntestazioneArmature() {
-        System.out.printf("%-25s %-20s %s%n", "NOME", "CLASSE ARMATURA (CA)", "FURTIVITÀ");
+    // --- ARMORS ---
+    private static void printArmorHeader() {
+        System.out.printf("%-25s %-20s %s%n", "NAME", "ARMOR CLASS (AC)", "STEALTH");
         System.out.println("-----------------------------------------------------------------------");
     }
-
-    public static void stampaArmatureLeggere() {
-        System.out.println("\n--- Armature Leggere ---");
-        stampaIntestazioneArmature();
-        // Format: Nome, CA, Furtività
+    public static void printLightArmors() {
+        System.out.println("\n--- Light Armors ---");
+        printArmorHeader();
         String format = "%-25s %-20s %s%n";
-
-        System.out.printf(format, "Imbottita", "11 + Des", "Svantaggio");
-        System.out.printf(format, "Armatura di cuoio", "11 + Des", "-");
-        System.out.printf(format, "Cuoio borchiato", "12 + Des", "-");
+        System.out.printf(format, "Padded", "11 + Dex", "Disadvantage");
+        System.out.printf(format, "Leather", "11 + Dex", "-");
+        System.out.printf(format, "Studded leather", "12 + Dex", "-");
     }
-
-    public static void stampaArmatureMedie() {
-        System.out.println("\n--- Armature Medie ---");
-        stampaIntestazioneArmature();
+    public static void printMediumArmors() {
+        System.out.println("\n--- Medium Armors ---");
+        printArmorHeader();
         String format = "%-25s %-20s %s%n";
-
-        System.out.printf(format, "Pelle", "12 + Des (max 2)", "-");
-        System.out.printf(format, "Giaco di maglia", "13 + Des (max 2)", "-");
-        System.out.printf(format, "Corazza di scaglie", "14 + Des (max 2)", "Svantaggio");
-        System.out.printf(format, "Corazza di piastre", "14 + Des (max 2)", "-");
-        System.out.printf(format, "Mezza armatura a piastre", "15 + Des (max 2)", "Svantaggio");
+        System.out.printf(format, "Hide", "12 + Dex (max 2)", "-");
+        System.out.printf(format, "Chain shirt", "13 + Dex (max 2)", "-");
+        System.out.printf(format, "Scale mail", "14 + Dex (max 2)", "Disadvantage");
+        System.out.printf(format, "Breastplate", "14 + Dex (max 2)", "-");
+        System.out.printf(format, "Half plate", "15 + Dex (max 2)", "Disadvantage");
     }
-
-    public static void stampaArmaturePesanti() {
-        System.out.println("\n--- Armature Pesanti ---");
-        stampaIntestazioneArmature();
+    public static void printHeavyArmors() {
+        System.out.println("\n--- Heavy Armors ---");
+        printArmorHeader();
         String format = "%-25s %-20s %s%n";
-
-        System.out.printf(format, "Corazza ad anelli", "14", "Svantaggio");
-        System.out.printf(format, "Cotta di maglia", "16", "Svantaggio");
-        System.out.printf(format, "Corazza a strisce", "17", "Svantaggio");
-        System.out.printf(format, "Armatura completa", "18", "Svantaggio");
+        System.out.printf(format, "Ring mail", "14", "Disadvantage");
+        System.out.printf(format, "Chain mail", "16", "Disadvantage");
+        System.out.printf(format, "Splint", "17", "Disadvantage");
+        System.out.printf(format, "Plate", "18", "Disadvantage");
     }
 
-    public static void stampaTrucchettiBardo() {
-        stampaInColonne(TRUCCHETTI_BARDO);
-    }
-    public static void stampaIncantesimiLiv1Bardo() {
-        stampaInColonne(INCANTESIMI_BARDO_LVL1);
-    }
-    public static void stampaTrucchettiChierico() {
-        stampaInColonne(TRUCCHETTI_CHIERICO);
-    }
-    public static void stampaIncantesimiLiv1Chierico() {
-        stampaInColonne(INCANTESIMI_CHIERICO_LVL1);
-    }
-    public static void stampaTrucchettiDruido() {
-        stampaInColonne(TRUCCHETTI_DRUIDO);
-    }
-    public static void stampaIncantesimiLiv1Druido() {
-        stampaInColonne(INCANTESIMI_DRUIDO_LVL1);
-    }
-    public static void stampaTrucchettiStregone() {
-        stampaInColonne(TRUCCHETTI_STREGONE);
-    }
-    public static void stampaIncantesimiLiv1Stregone() {
-        stampaInColonne(INCANTESIMI_STREGONE_LVL1);
-    }
-    public static void stampaTrucchettiWarlock() {
-        stampaInColonne(TRUCCHETTI_WARLOCK);
-    }
-    public static void stampaIncantesimiLiv1Warlock() {
-        stampaInColonne(INCANTESIMI_WARLOCK_LVL1);
-    }
-    public static void stampaTrucchettiMago() {
-        stampaInColonne(TRUCCHETTI_MAGO);
-    }
-    public static void stampaIncantesimiLiv1Mago() {
-        stampaInColonne(INCANTESIMI_MAGO_LVL1);
-    }
-    public static void stampaListaLingue() {
-        stampaInColonne(LINGUE);
-    }
-    public static void stampaListaBackground() {
-        stampaInColonne(BACKGROUND);
+    public static void printAlignmentsList() {
+        printInColumns(ALIGNMENTS);
     }
 
-    public static void stampaInColonne(String[] lista) {
+    // --- UTILS ---
+    /**
+     * Formats and prints an array of strings into a visually aligned three-column grid.
+     * This utility is used to display long lists of options (like skills, spells, or equipment)
+     * in a compact and readable format on the standard output.
+     *
+     * @param list The array of strings to be displayed in columns.
+     */
+    public static void printInColumns(String[] list) {
         String format = "%-25s %-25s %-25s%n";
-        for (int i = 0; i < lista.length; i += 3) {
-            String s1 = lista[i];
-            String s2 = (i + 1 < lista.length) ? lista[i + 1] : "";
-            String s3 = (i + 2 < lista.length) ? lista[i + 2] : "";
+        for (int i = 0; i < list.length; i += 3) {
+            String s1 = list[i];
+            String s2 = (i + 1 < list.length) ? list[i + 1] : "";
+            String s3 = (i + 2 < list.length) ? list[i + 2] : "";
             System.out.printf(format, s1, s2, s3);
         }
     }
 
-    public static boolean contains(String[] lista, String elemento){
-        for(String s : lista){
-            if(s.equalsIgnoreCase(elemento)){
+    public static boolean contains(String[] list, String element){
+        for(String s : list){
+            if(s.equalsIgnoreCase(element)){
                 return true;
             }
         }
         return false;
     }
 
-    public static void stampaPersonaggio(Personaggio pg) {
-        System.out.println("\n\n\n---------------------------------------------------");
-        System.out.println("---------------------------------------------------");
-        System.out.println("Ecco la scheda del tuo personaggio");
-
-        System.out.println("---------------------------------------------------");
-        System.out.println("Nome personaggio: " + pg.getNome());
-        System.out.println("Classe: " + pg.getClasse().getNomeClasse());
-        System.out.println("Background: " + pg.getBackground().getNomeBackground());
-        System.out.println("Razza: " + pg.getRazza().getNomeRazza());
-        System.out.println("Allineamento: " + pg.getAllineamento());
+    // --- CHARACTER SHEET ---
+    /**
+     * Prints a complete, stylized D&D 5e character sheet to the standard output.
+     * This method renders all aggregated statistics, ability modifiers, combat stats,
+     * inventory, and spellcasting details calculated for the provided character.
+     *
+     * @param pg The fully generated and calculated PlayerCharacter object to be displayed.
+     */
+    public static void printCharacter(PlayerCharacter pg) {
+        System.out.println("\n\n\n===================================================");
+        System.out.println("                 CHARACTER SHEET");
+        System.out.println("===================================================");
+        System.out.println("Name: " + pg.getName());
+        System.out.println("Class: " + pg.getCharacterClass().getName());
+        System.out.println("Background: " + pg.getBackground().getName());
+        System.out.println("Race: " + pg.getRace().getName());
+        System.out.println("Alignment: " + pg.getAlignment());
 
         System.out.println("\n---------------------------------------------------");
-        System.out.println("Caratteristiche: ");
-        for(String key : pg.getCaratteristiche().keySet()){
-            System.out.println(key + ": " + pg.getCaratteristiche().get(key));
+        System.out.println("ABILITY SCORES:");
+        for(attributes.Ability key : pg.getAbilityScores().keySet()){
+            int score = pg.getAbilityScores().get(key);
+            int mod = pg.getAbilityModifier(key);
+            System.out.printf("%-15s: %d (%+d)%n", key.name(), score, mod);
         }
 
         System.out.println("---------------------------------------------------");
-        System.out.println("Bonus di competenza: " + pg.getClasse().getBonusCompetenza());
+        System.out.println("Proficiency Bonus: +" + pg.getProficiencyBonus());
 
         System.out.println("\n---------------------------------------------------");
-        System.out.println("Competenza tiri salvezza: ");
-        System.out.println(pg.getCompetenzaTiriSalvezza());
-
-        System.out.println("\n---------------------------------------------------");
-        System.out.println("Abilità: ");
-        for(String key : pg.getMappaSkill().keySet()){
-            System.out.println(key + ": " + pg.getMappaSkill().get(key).getValoreBonus());
+        System.out.println("SAVING THROW PROFICIENCIES:");
+        for (attributes.Ability ab : pg.getSavingThrowsProficiencies()) {
+            System.out.println("- " + ab.name());
         }
 
         System.out.println("\n---------------------------------------------------");
-        System.out.println("Percezione passiva: " + pg.getPercezionePassiva());
-
-        System.out.println("\n---------------------------------------------------");
-        System.out.println("Altre competenze & linguaggi:");
-        System.out.println(pg.getLanguages());
-        System.out.println("Competenza in armi:");
-        System.out.println(pg.getCompetenzaArmi());
-        System.out.println("Competenza in armature:");
-        System.out.println(pg.getCompetenzaArmature());
-        System.out.println("Competenza negli strumenti:");
-        System.out.println(pg.getCompetenzaStrumenti());
-
-        System.out.println("\n---------------------------------------------------");
-        System.out.println("CA: " + pg.getClasseArmature());
-        System.out.println("Iniziativa: " + pg.getIniziativa());
-        System.out.println("Velocità: " + pg.getRazza().getBaseSpeed());
-        System.out.println("Punti ferita: " + pg.getPuntiFerita());
-        System.out.println("Dadi vita: " + pg.getClasse().getHitDice());
-
-        System.out.println("\n---------------------------------------------------");
-        System.out.println("Equipaggiamento:");
-        System.out.println(pg.getEquipaggiamento());
-        System.out.println("Armature:");
-        System.out.println(pg.getArmature());
-        System.out.println("Armi:");
-        System.out.println(pg.getArmi());
-
-        System.out.println("\n---------------------------------------------------");
-        System.out.println("Privilegi & tratti:");
-        System.out.println("Da classe:");
-        System.out.println(pg.getPrivilegiClasse());
-        if(pg.getRazza().getScurovisione()){
-            System.out.println("Scurovisione: 9m");
-        }
-        System.out.println("Da background:");
-        System.out.println(pg.getPrivilegiBackground());
-        System.out.println("Resistenze: ");
-        System.out.println(pg.getResistance());
-        System.out.println("Vantaggio nei tiri salvezza:");
-        System.out.println(pg.getVantaggiTiriSalvezza());
-        System.out.println("Altro: ");
-        System.out.println(pg.getBonusExtra());
-
-        System.out.println("\n---------------------------------------------------");
-        System.out.println("Età: " + pg.getEta());
-        System.out.println("Altezza: " + pg.getAltezza());
-        System.out.println("Peso: " + pg.getPeso());
-        System.out.println("Occhi: " + pg.getOcchi());
-        System.out.println("Carnagione: " + pg.getCarnagione());
-        System.out.println("Capelli: " + pg.getCapelli());
-
-        System.out.println("\n---------------------------------------------------");
-        if(pg.getClasse().getCaratteristicaIncantatore() != null){
-            System.out.println("Caratteristica da incantatore: " + pg.getClasse().getCaratteristicaIncantatore());
-            System.out.println("CD Tiro Salvezza Incantesimi: " + (8 + pg.getModificatoreCaratteristiche(pg.getClasse().getCaratteristicaIncantatore()   ) + pg.getClasse().getBonusCompetenza()));
-            System.out.printf("Bonus di Attacco Incantesimi: %+d%n", pg.getModificatoreCaratteristiche(pg.getClasse().getCaratteristicaIncantatore()) + pg.getClasse().getBonusCompetenza());
-            System.out.println("Lista incantesimi:");
-            System.out.println(pg.getIncantesimiConosciuti());
-        }
-        else {
-            System.out.println("Non sei un incantatore");
+        System.out.println("SKILLS:");
+        for(attributes.Skill skill : attributes.Skill.values()){
+            int bonus = pg.getAbilityModifier(skill.getAssociatedAbility());
+            String marker = " ";
+            if (pg.getSkillExpertises().contains(skill)) {
+                bonus += (pg.getProficiencyBonus() * 2);
+                marker = "*"; // Expertise
+            } else if (pg.getSkillProficiencies().contains(skill)) {
+                bonus += pg.getProficiencyBonus();
+                marker = "o"; // Proficiency
+            }
+            String cleanName = skill.name().replace("_", " ");
+            System.out.printf("[%s] %-20s: %+d%n", marker, cleanName, bonus);
         }
 
+        System.out.println("\n---------------------------------------------------");
+        System.out.println("Passive Perception: " + pg.getPassivePerception());
+
+        System.out.println("\n---------------------------------------------------");
+        System.out.println("OTHER PROFICIENCIES & LANGUAGES:");
+        System.out.println("Languages: " + String.join(", ", pg.getLanguages()));
+        System.out.println("Weapons: " + String.join(", ", pg.getWeaponProficiencies()));
+        System.out.println("Armor: " + String.join(", ", pg.getArmorProficiencies()));
+        System.out.println("Tools: " + String.join(", ", pg.getToolProficiencies()));
+
+        System.out.println("\n---------------------------------------------------");
+        System.out.println("COMBAT STATS:");
+        System.out.println("AC: " + pg.getArmorClass());
+        System.out.println("Initiative: " + pg.getInitiative());
+        System.out.println("Speed: " + pg.getSpeed() + " m.");
+        System.out.println("Hit Points: " + pg.getCurrentHitPoints() + " / " + pg.getMaxHitPoints());
+        System.out.println("Hit Dice: " + pg.getCharacterClass().getHitDices());
+
+        System.out.println("\n---------------------------------------------------");
+        System.out.println("INVENTORY & EQUIPMENT:");
+        System.out.println("Equipped Armor: " + pg.getEquippedArmor() + (pg.isShieldEquipped() ? " & Shield" : ""));
+        System.out.println("Weapons: " + String.join(", ", pg.getWeapons()));
+        System.out.println("Inventory: " + String.join(", ", pg.getInventory()));
+
+        System.out.println("\n---------------------------------------------------");
+        System.out.println("FEATURES & TRAITS:");
+        System.out.println("Resistances: " + String.join(", ", pg.getResistances()));
+        System.out.println("Class/Race/Background Features: \n- " + String.join("\n- ", pg.getExtraBonuses()));
+        if (!pg.getDisadvantages().isEmpty()) {
+            System.out.println("\nDISADVANTAGES & PENALTIES:\n- " + String.join("\n- ", pg.getDisadvantages()));
+        }
+
+        System.out.println("\n---------------------------------------------------");
+        System.out.println("PHYSICAL TRAITS:");
+        System.out.printf("Age: %d | Height: %d | Weight: %.1f%n", pg.getAge(), pg.getHeight(), pg.getWeight());
+        System.out.printf("Eyes: %s | Skin: %s | Hair: %s%n", pg.getEyes(), pg.getSkin(), pg.getHair());
+
+        System.out.println("\n---------------------------------------------------");
+        if(pg.getSpellcastingAbility() != null){
+            System.out.println("SPELLCASTING:");
+            System.out.println("Spellcasting Ability: " + pg.getSpellcastingAbility());
+            int spellSaveDC = 8 + pg.getAbilityModifier(pg.getSpellcastingAbility()) + pg.getProficiencyBonus();
+            int spellAttackBonus = pg.getAbilityModifier(pg.getSpellcastingAbility()) + pg.getProficiencyBonus();
+            System.out.println("Spell Save DC: " + spellSaveDC);
+            System.out.printf("Spell Attack Bonus: %+d%n", spellAttackBonus);
+            System.out.println("Known Spells & Cantrips:");
+            System.out.println("- " + String.join("\n- ", pg.getSpells()));
+        } else {
+            System.out.println("You are not a spellcaster.");
+        }
+        System.out.println("===================================================\n");
     }
 }

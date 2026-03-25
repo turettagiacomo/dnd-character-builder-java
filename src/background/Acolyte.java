@@ -1,29 +1,28 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Acolyte extends Background{
     public Acolyte() {
-        super("Accolito");
+        super("Acolyte");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Intuizione").setCompetenza(true);
-        mappaSkill.get("Religione").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.INSIGHT);
+        skillProficiencies.add(Skill.RELIGION);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Simbolo sacro", "5 bastoncini di incenso", "Vestamenti", "Vestiti comuni", "Sacca da cintura"};
-        addBonus(items, equipaggiamento);
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"Holy symbol", "5 sticks of incense", "Vestments", "Common clothes", "Belt pouch with 15gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Rifugio del Fedele (Ospitalità presso templi della tua fede)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("Shelter of the faithful");
     }
 }

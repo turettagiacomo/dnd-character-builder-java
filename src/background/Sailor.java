@@ -1,35 +1,34 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Sailor extends Background{
     public Sailor() {
-        super("Marinaio");
+        super("Sailor");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Atletica").setCompetenza(true);
-        mappaSkill.get("Percezione").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.ATHLETICS);
+        skillProficiencies.add(Skill.PERCEPTION);
     }
 
     @Override
-    public void applicaCompetenzaStrumenti(ArrayList<String> strumentiProficiency) {
-        String[] items = {"Strumenti da navigatore", "Veicoli acquatici"};
-        addBonus(items, strumentiProficiency);
+    public void applyToolsProficiencies(List<String> toolsProficiencies) {
+        String[] items = {"Navigator's tools", "Vehicles (water)"};
+        addBonus(items, toolsProficiencies);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Mazza", "15m di corda di seta", "Portafortuna", "Abiti comuni", "Borsa con 10 mo"};
-        addBonus(items, equipaggiamento);
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"Belaying pin (club)", "50 feet of silk rope", "Lucky charm", "Common clothes", "Pouch with 10gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Passaggio Marittimo (Puoi ottenere passaggio gratuito sulle navi per te e il gruppo)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("Ship's passage");
     }
 }

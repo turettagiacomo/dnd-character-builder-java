@@ -1,35 +1,33 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Charlatan extends Background{
     public Charlatan() {
-        super("Ciarlatano");
+        super("Charlatan");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Inganno").setCompetenza(true);
-        mappaSkill.get("Rapidità di mano").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.DECEPTION);
+        skillProficiencies.add(Skill.SLEIGHT_OF_HAND);
+    }
+    @Override
+    public void applyToolsProficiencies(List<String> toolsProficiencies) {
+        String[] items = {"Disguise kit", "Forgery kit"};
+        addBonus(items, toolsProficiencies);
     }
 
     @Override
-    public void applicaCompetenzaStrumenti(ArrayList<String> strumentiProficiency) {
-        String[] items = {"Kit per il trucco", "Kit per falsificare"};
-        addBonus(items, strumentiProficiency);
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"Fine clothes", "Disguise kit", "Pouch with 15gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Abiti pregiati", "Kit per il trucco", "Borsa con 15 mo"};
-        addBonus(items, equipaggiamento);
-    }
-
-    @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Falsa Identità (Possiedi documenti e alias per una seconda vita)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("False identity");
     }
 }

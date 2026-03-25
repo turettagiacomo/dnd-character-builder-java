@@ -1,35 +1,34 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class Entertainer extends Background{
     public Entertainer() {
-        super("Intrattenitore");
+        super("Entertainer");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Acrobazia").setCompetenza(true);
-        mappaSkill.get("Intrattenere").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.ACROBATICS);
+        skillProficiencies.add(Skill.PERFORMANCE);
     }
 
     @Override
-    public void applicaCompetenzaStrumenti(ArrayList<String> strumentiProficiency) {
-        String[] items ={"Kit per il trucco"};
-        addBonus(items, strumentiProficiency);
+    public void applyToolsProficiencies(List<String> toolsProficiencies) {
+        String[] items ={"Disguise kit"};
+        addBonus(items, toolsProficiencies);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Favore di un ammiratore", "Costume di scena", "Borsa con 15 mo"};
-        addBonus(items, equipaggiamento);
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"Favor of an admirer", "Costume", "Belt pouch with 15gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("A Grande Richiesta (Puoi trovare vitto e alloggio esibendoti)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("By popular demand");
     }
 }

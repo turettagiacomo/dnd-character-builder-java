@@ -1,35 +1,33 @@
 package background;
 
-import razze.Skill;
+import attributes.Skill;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 
 public class FolkHero extends Background{
     public FolkHero() {
-        super("Eroe popolare");
+        super("Folk Hero");
     }
 
     @Override
-    public void applicaCompetenzeAbilita(Map<String, Skill> mappaSkill) {
-        mappaSkill.get("Addestrare animali").setCompetenza(true);
-        mappaSkill.get("Sopravvivenza").setCompetenza(true);
+    public void applyProficiencies(List<Skill> skillProficiencies) {
+        skillProficiencies.add(Skill.ANIMAL_HANDLING);
+        skillProficiencies.add(Skill.SURVIVAL);
+    }
+
+    public void applyToolsProficiencies(List<String> toolsProficiencies) {
+        String[] items = {"Vehicles (land)"};
+        addBonus(items, toolsProficiencies);
     }
 
     @Override
-    public void applicaCompetenzaStrumenti(ArrayList<String> strumentiProficiency) {
-        String[] items = {"Veicoli terrestri"};
-        addBonus(items, strumentiProficiency);
+    public void applyEquipment(List<String> equipment) {
+        String[] items = {"A set of artisan's tools", "Shovel", "Iron pot", "Common clothes", "Pouch with 10gp"};
+        addBonus(items, equipment);
     }
 
     @Override
-    public void applicaEquipaggiamento(ArrayList<String> equipaggiamento) {
-        String[] items = {"Set strumenti da artigiano","Pala", "Pentola di ferro", "Abiti comuni", "Borsa con 10 mo"};
-        addBonus(items, equipaggiamento);
-    }
-
-    @Override
-    public void applicaPrivilegiBackground(ArrayList<String> feature) {
-        feature.add("Ospitalità Rurale (La gente comune ti aiuta e nasconde)");
+    public void applyBonuses(List<String> bonuses) {
+        bonuses.add("Rustic hospitality");
     }
 }
