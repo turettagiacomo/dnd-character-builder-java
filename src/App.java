@@ -13,7 +13,7 @@ public class App {
 
         System.out.println("What do you want to do?");
         System.out.println("[a] Load a character");
-        System.out.println("[b] Create a new one");
+        System.out.println("[b] Create a new character");
 
         String startChoice = getValidMenuChoice(sc, 2);
 
@@ -39,20 +39,22 @@ public class App {
 
         // --- RACE SELECTION ---
 
-        System.out.println("The first step in order to create a new character is choosing the race. You can pick one from the following list:");
+        System.out.println("\nLet's start with the basics. Choose your character's race from the list below:");
         MenuPrinter.printRacesList();
 
         while (myPc.getRace() == null) {
             System.out.print("\nWhat race do you choose? ");
             String choice = sc.nextLine().trim();
+            System.out.println();
 
             if (choice.equalsIgnoreCase("Dwarf")) {
-                System.out.println("\nAs a dwarf you are proficient in one artisan's tool. Choose one of this: ");
+                System.out.println("\nDwarves are renowned craftsmen. Choose your artisan's tool proficiency:");
                 String[] dwarvenTools = {"Smith's tools", "Brewer's supplies", "Mason's tools"};
                 multipleChoice(1, myPc, dwarvenTools, sc, "TOOL_PROFICIENCY");
 
-                System.out.println("\nAlso in the world of D&D exist different kind of dwarves. Which one would you like to be? ");
+                System.out.println("\nDwarven clans are diverse and proud.");
                 MenuPrinter.printDwarfSubraces();
+                System.out.print("\nWhich lineage do you hail from? ");
                 String subChoice = sc.nextLine().trim();
 
                 DwarvenSubrace subDwarf = null;
@@ -70,8 +72,9 @@ public class App {
                 myPc.setRace(new Dwarf(subDwarf));
             }
             else if (choice.equalsIgnoreCase("Elf")) {
-                System.out.println("You must choose a subrace:");
+                System.out.println("Graceful and long-lived, the elven kin are divided into distinct cultures.");
                 MenuPrinter.printElfSubraces();
+                System.out.print("\nWhich one do you belong to? ");
                 String subChoice = sc.nextLine().trim();
 
                 ElvenSubrace subElven = null;
@@ -95,8 +98,9 @@ public class App {
                 myPc.setRace(new Elf(subElven));
             }
             else if (choice.equalsIgnoreCase("Halfling")) {
-                System.out.println("You must choose a subrace:");
+                System.out.println("The two main kinds of halfling, lightfoot and stout, are more like closely related families than true subraces.");
                 MenuPrinter.printHalflingSubraces();
+                System.out.print("\nWhich one do you belong to? ");
                 String subChoice = sc.nextLine().trim();
 
                 HalflingSubrace subHalfling = null;
@@ -118,8 +122,9 @@ public class App {
                 multipleChoice(1, myPc, MenuPrinter.LANGUAGES, sc, "LANGUAGE");
             }
             else if (choice.equalsIgnoreCase("Dragonborn")) {
-                System.out.println("You must choose a draconic ancestry:");
+                System.out.println("Descended from dragons, your bloodline determines your breath weapon.");
                 MenuPrinter.printDraconicAncestries();
+                System.out.print("Who are your ancestors? ");
 
                 boolean validAncestry = false;
                 while (!validAncestry) {
@@ -137,8 +142,9 @@ public class App {
                 }
             }
             else if (choice.equalsIgnoreCase("Gnome")) {
-                System.out.println("You must choose a subrace:");
+                System.out.println("Gnomish communities are generally divided into two distinct subraces: forest gnomes and rock gnomes.");
                 MenuPrinter.printGnomeSubraces();
+                System.out.print("\nWhich subrace do you choose? ");
                 String subChoice = sc.nextLine().trim();
 
                 GnomishSubrace subGnome = null;
@@ -175,11 +181,11 @@ public class App {
 
         // --- CLASS SELECTION ---
 
-        System.out.println("\nExcellent choice! Now, the next step is choosing what your character class is gonna be. You can choose of the following:");
+        System.out.println("\nExcellent choice! The next step is to choose your character's class.");
         MenuPrinter.printClassesList();
+        System.out.print("Which class will you play? ");
 
         while (myPc.getCharacterClass() == null) {
-            System.out.print("\nWhat class do you choose? ");
             String choice = sc.nextLine().trim();
 
             if (choice.equalsIgnoreCase("Barbarian")) {
@@ -188,7 +194,7 @@ public class App {
                 String[] barbarianSkills = {"Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"};
                 multipleChoice(2, myPc, barbarianSkills, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Greataxe / [b] Any martial melee weapon");
 
                 String eq1 = getValidMenuChoice(sc, 2);
@@ -199,6 +205,7 @@ public class App {
                 else {
                     System.out.println("Choose one of the following weapons:");
                     MenuPrinter.printMartialMeleeWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                 }
 
@@ -213,6 +220,7 @@ public class App {
                     System.out.println("Choose one of the following weapons:");
                     MenuPrinter.printSimpleMeleeWeapons();
                     MenuPrinter.printSimpleRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                 }
             }
@@ -221,7 +229,7 @@ public class App {
 
                 multipleChoice(3, myPc, MenuPrinter.SKILLS, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Rapier / [b] Longsword / [c] Any simple weapon");
                 String eq1 = getValidMenuChoice(sc, 3);
                 if (eq1.equals("a")) {
@@ -234,6 +242,7 @@ public class App {
                     System.out.println("Choose one of the following weapons:");
                     MenuPrinter.printSimpleMeleeWeapons();
                     MenuPrinter.printSimpleRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                 }
 
@@ -264,7 +273,7 @@ public class App {
                 String[] clericSkills = {"History", "Insight", "Medicine", "Persuasion", "Religion"};
                 multipleChoice(2, myPc, clericSkills, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Mace / [b] Warhammer (if proficient)");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
@@ -295,6 +304,7 @@ public class App {
                     System.out.println("Choose one of the following weapons:");
                     MenuPrinter.printSimpleMeleeWeapons();
                     MenuPrinter.printSimpleRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                 }
 
@@ -352,7 +362,7 @@ public class App {
                 String[] druidSkills = {"Arcana", "Animal Handling", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"};
                 multipleChoice(2, myPc, druidSkills, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Shield / [b] Any simple weapon");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
@@ -362,6 +372,7 @@ public class App {
                     System.out.println("Choose one of the following weapons:");
                     MenuPrinter.printSimpleMeleeWeapons();
                     MenuPrinter.printSimpleRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                 }
 
@@ -373,6 +384,7 @@ public class App {
                 else {
                     System.out.println("Choose one of the following weapons:");
                     MenuPrinter.printSimpleMeleeWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                 }
 
@@ -385,7 +397,7 @@ public class App {
                 String[] fighterSkills = {"Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Perception", "Survival"};
                 multipleChoice(2, myPc, fighterSkills, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Chain mail / [b] Leather armor, longbow, and 20 arrows");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
@@ -402,6 +414,7 @@ public class App {
                     System.out.println("Choose the martial weapon:");
                     MenuPrinter.printMartialMeleeWeapons();
                     MenuPrinter.printMartialRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                     myPc.addArmor("Shield");
                 }
@@ -409,6 +422,7 @@ public class App {
                     System.out.println("Choose the first martial weapon:");
                     MenuPrinter.printMartialMeleeWeapons();
                     MenuPrinter.printMartialRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                     System.out.println("Choose the second martial weapon:");
                     myPc.addWeapon(sc.nextLine().trim());
@@ -438,7 +452,7 @@ public class App {
                 String[] monkSkills = {"Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"};
                 multipleChoice(2, myPc, monkSkills, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Shortsword / [b] Any simple weapon");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
@@ -448,6 +462,7 @@ public class App {
                     System.out.println("Choose one of the following weapons:");
                     MenuPrinter.printSimpleMeleeWeapons();
                     MenuPrinter.printSimpleRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                 }
 
@@ -472,13 +487,14 @@ public class App {
                 String[] paladinSkills = {"Athletics", "Insight", "Intimidation", "Medicine", "Persuasion", "Religion"};
                 multipleChoice(2, myPc, paladinSkills, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Martial weapon and shield / [b] Two martial weapons");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
                     System.out.println("Choose the martial weapon:");
                     MenuPrinter.printMartialMeleeWeapons();
                     MenuPrinter.printMartialRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                     myPc.addArmor("Shield");
                 }
@@ -486,6 +502,7 @@ public class App {
                     System.out.println("Choose the first martial weapon:");
                     MenuPrinter.printMartialMeleeWeapons();
                     MenuPrinter.printMartialRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                     System.out.println("Choose the second martial weapon:");
                     myPc.addWeapon(sc.nextLine().trim());
@@ -499,6 +516,7 @@ public class App {
                 else {
                     System.out.println("Choose one of the following weapons:");
                     MenuPrinter.printSimpleMeleeWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                 }
 
@@ -517,7 +535,7 @@ public class App {
                 String[] rangerSkills = {"Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"};
                 multipleChoice(3, myPc, rangerSkills, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Scale mail / [b] Leather armor");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
@@ -536,6 +554,7 @@ public class App {
                 else {
                     System.out.println("Choose the first simple melee weapon:");
                     MenuPrinter.printSimpleMeleeWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                     System.out.println("Choose the second simple melee weapon:");
                     myPc.addWeapon(sc.nextLine().trim());
@@ -558,7 +577,7 @@ public class App {
                 System.out.println("Choose 2 skills for Expertise (double proficiency):");
                 multipleChoice(2, myPc, rogueSkills, sc, "SKILL_EXPERTISE");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Rapier / [b] Shortsword");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
@@ -593,7 +612,7 @@ public class App {
                 String[] sorcererSkills = {"Arcana", "Deception", "Insight", "Intimidation", "Persuasion", "Religion"};
                 multipleChoice(2, myPc, sorcererSkills, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Light crossbow and 20 bolts / [b] Any simple weapon");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
@@ -603,6 +622,7 @@ public class App {
                     System.out.println("Choose one of the following weapons:");
                     MenuPrinter.printSimpleMeleeWeapons();
                     MenuPrinter.printSimpleRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                 }
 
@@ -662,7 +682,7 @@ public class App {
                 String[] warlockSkills = {"Arcana", "Deception", "History", "Intimidation", "Investigation", "Nature", "Religion"};
                 multipleChoice(2, myPc, warlockSkills, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Light crossbow and 20 bolts / [b] Any simple weapon");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
@@ -672,6 +692,7 @@ public class App {
                     System.out.println("Choose one of the following weapons:");
                     MenuPrinter.printSimpleMeleeWeapons();
                     MenuPrinter.printSimpleRangedWeapons();
+                    System.out.print("\nEnter your weapon of choice: ");
                     myPc.addWeapon(sc.nextLine().trim());
                 }
 
@@ -720,7 +741,7 @@ public class App {
                 String[] wizardSkills = {"Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"};
                 multipleChoice(2, myPc, wizardSkills, sc, "SKILL");
 
-                System.out.println("Choose your equipment. Pick one of the following:");
+                System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
                 System.out.println("[a] Quarterstaff / [b] Dagger");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
@@ -759,11 +780,11 @@ public class App {
 
         // --- BACKGROUND SELECTION ---
 
-        System.out.println("\nChoose your background:");
+        System.out.println("\nEvery story has a beginning. Your character's background reveals where you came from, how you became an adventurer, and your place in the world.\n");
         MenuPrinter.printBackgroundsList();
 
         while (myPc.getBackground() == null) {
-            System.out.print("What background do you choose? ");
+            System.out.print("Who were you? ");
             String choice = sc.nextLine().trim();
 
             if (choice.equalsIgnoreCase("Acolyte")) {
@@ -831,7 +852,7 @@ public class App {
 
         // --- CHARACTER BIO ---
 
-        System.out.println("\nNow, let's define who you are and what you look like!");
+        System.out.println("\nNow, let's define your character's details.");
 
         System.out.print("Character Name: ");
         myPc.setName(sc.nextLine().trim());
@@ -896,7 +917,7 @@ public class App {
 
         // --- CHARACTER STATS GENERATION ---
 
-        System.out.println("\nNow it's time to generate your Ability Scores.");
+        System.out.println("\nHello there " + myPc.getName() + ". It's now the time for you to set your abilities.");
 
         boolean statsGenerated = false;
         while (!statsGenerated) {
@@ -976,9 +997,10 @@ public class App {
             myPc.saveCharacter(fileName);
         }
 
-        System.out.println("\nThank you for using Project Nox Builder! May your crits be many.");
+        System.out.println("\nThe sun rises outside, and " + myPc.getName() + " wakes up to a strange sound...");
         sc.close();
     }
+
     /**
      * Prompts the user to select a specified number of items from a predefined pool of choices.
      * It handles input validation, ensures choices strictly match the available pool, and
@@ -994,7 +1016,7 @@ public class App {
      */
     private static void multipleChoice(int numberOfChoices, PlayerCharacter pg, String[] choicesPool, Scanner sc, String type) {
         int counter = 0;
-        System.out.println("Choose " + type.toLowerCase().replace("_", " ") + " between:");
+        System.out.println("\nChoose " + type.toLowerCase().replace("_", " ") + " between:");
         MenuPrinter.printInColumns(choicesPool);
 
         while (counter < numberOfChoices) {
@@ -1098,6 +1120,7 @@ public class App {
             validOptions[i] = String.valueOf((char) ('a' + i));
         }
 
+        System.out.print("What do you pick? ");
         String input = sc.nextLine().trim().toLowerCase();
         boolean isValid = false;
         while (!isValid) {
@@ -1128,10 +1151,12 @@ public class App {
                         pg.setAbilityScore(ability, score);
                         availableScores.remove(Integer.valueOf(score));
                         validScore = true;
-                    } else {
+                    }
+                    else {
                         System.out.println("Invalid choice. Please pick a score from the available list.");
                     }
-                } catch (NumberFormatException e) {
+                }
+                catch (NumberFormatException e) {
                     System.out.println("Invalid input. Please enter a number.");
                 }
             }
