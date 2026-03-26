@@ -39,3 +39,10 @@ To run Project Nox locally on your machine:
    ```
 
 Developed by Giacomo Turetta - First-Year Computer Engineering Student.
+
+## Legal Disclaimer & Copyright
+This project is an independent, unofficial fan-made software and is **not** affiliated with, endorsed, sponsored, or specifically approved by Wizards of the Coast LLC. 
+
+This work includes material taken from the System Reference Document 5.1 (“SRD 5.1”) provided by Wizards of the Coast LLC and available at https://dnd.wizards.com/resources/systems-reference-document. The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International License available at https://creativecommons.org/licenses/by/4.0/legalcode.
+
+Dungeons & Dragons, D&D, their respective logos, and all Wizards titles and characters are property of Wizards of the Coast LLC in the U.S.A. and other countries. ©Wizards of the Coast LLC.
