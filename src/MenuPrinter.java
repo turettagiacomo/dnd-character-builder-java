@@ -319,7 +319,7 @@ public class MenuPrinter {
      * @param list The array of strings to be displayed in columns.
      */
     public static void printInColumns(String[] list) {
-        String format = "%-25s %-25s %-25s%n";
+        String format = "%-35s %-35s %-35s%n";
         for (int i = 0; i < list.length; i += 3) {
             String s1 = list[i];
             String s2 = (i + 1 < list.length) ? list[i + 1] : "";

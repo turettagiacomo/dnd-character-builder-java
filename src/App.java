@@ -45,7 +45,6 @@ public class App {
         while (myPc.getRace() == null) {
             System.out.print("\nWhat race do you choose? ");
             String choice = sc.nextLine().trim();
-            System.out.println();
 
             if (choice.equalsIgnoreCase("Dwarf")) {
                 System.out.println("Dwarves are renowned craftsmen. Choose your artisan's tool proficiency:");
@@ -55,10 +54,10 @@ public class App {
                 System.out.println("\nDwarven clans are diverse and proud.");
                 MenuPrinter.printDwarfSubraces();
                 System.out.print("\nWhich lineage do you hail from? ");
-                String subChoice = sc.nextLine().trim();
 
                 DwarvenSubrace subDwarf = null;
                 while (subDwarf == null) {
+                    String subChoice = sc.nextLine().trim();
                     if (subChoice.equalsIgnoreCase("Hill Dwarf")) {
                         subDwarf = new HillDwarf();
                     }
@@ -75,10 +74,10 @@ public class App {
                 System.out.println("Graceful and long-lived, the elven kin are divided into distinct cultures.");
                 MenuPrinter.printElfSubraces();
                 System.out.print("\nWhich one do you belong to? ");
-                String subChoice = sc.nextLine().trim();
 
                 ElvenSubrace subElven = null;
                 while (subElven == null) {
+                    String subChoice = sc.nextLine().trim();
                     if (subChoice.equalsIgnoreCase("High Elf")) {
                         subElven = new HighElf();
                         multipleChoice(1, myPc, MenuPrinter.LANGUAGES, sc, "LANGUAGE");
@@ -92,7 +91,6 @@ public class App {
                     }
                     else {
                         System.out.println("Invalid subrace. Try again.");
-                        subChoice = sc.nextLine().trim();
                     }
                 }
                 myPc.setRace(new Elf(subElven));
@@ -101,14 +99,14 @@ public class App {
                 System.out.println("The two main kinds of halfling, lightfoot and stout, are more like closely related families than true subraces.");
                 MenuPrinter.printHalflingSubraces();
                 System.out.print("\nWhich one do you belong to? ");
-                String subChoice = sc.nextLine().trim();
 
                 HalflingSubrace subHalfling = null;
                 while (subHalfling == null) {
-                    if (subChoice.equalsIgnoreCase("Lightfoot Halfling")) {
+                    String subChoice = sc.nextLine().trim();
+                    if (subChoice.equalsIgnoreCase("Lightfoot")) {
                         subHalfling = new LightfootHalfling();
                     }
-                    else if (subChoice.equalsIgnoreCase("Stout Halfling")) {
+                    else if (subChoice.equalsIgnoreCase("Stout")) {
                         subHalfling = new StoutHalfling();
                     }
                     else {
@@ -145,10 +143,10 @@ public class App {
                 System.out.println("Gnomish communities are generally divided into two distinct subraces: forest gnomes and rock gnomes.");
                 MenuPrinter.printGnomeSubraces();
                 System.out.print("\nWhich subrace do you choose? ");
-                String subChoice = sc.nextLine().trim();
 
                 GnomishSubrace subGnome = null;
                 while (subGnome == null) {
+                    String subChoice = sc.nextLine().trim();
                     if (subChoice.equalsIgnoreCase("Forest Gnome")) {
                         subGnome = new ForestGnome();
                     }
@@ -811,9 +809,18 @@ public class App {
         System.out.println("\nNow, let's define your character's details.");
 
         System.out.print("Character Name: ");
-        myPc.setName(sc.nextLine().trim());
+        String input = "";
+        while(input.isEmpty()){
+            input = sc.nextLine().trim();
+        }
+        myPc.setName(input);
+        input = "";
         System.out.print("Gender: ");
-        myPc.setGender(sc.nextLine().trim());
+        while(input.isEmpty()){
+            input = sc.nextLine().trim();
+        }
+        myPc.setGender(input);
+        input = "";
         while (myPc.getAge() <= 0) {
             System.out.print("Age (number): ");
             try {
@@ -826,7 +833,7 @@ public class App {
                 }
             }
             catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a numeric value for Age (e.g., 30).");
+                System.out.println("Invalid select. Please enter a numeric value for Age (e.g., 30).");
             }
         }
         while (myPc.getHeight() <= 0) {
@@ -837,7 +844,7 @@ public class App {
                 else System.out.println("Height must be greater than 0.");
             }
             catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a numeric value for Height (e.g., 180).");
+                System.out.println("Invalid select. Please enter a numeric value for Height (e.g., 180).");
             }
         }
         while (myPc.getWeight() <= 0) {
@@ -848,15 +855,26 @@ public class App {
                 else System.out.println("Weight must be greater than 0.");
             }
             catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a numeric value for Weight (e.g., 80.5).");
+                System.out.println("Invalid select. Please enter a numeric value for Weight (e.g., 80.5).");
             }
         }
         System.out.print("Eyes: ");
-        myPc.setEyes(sc.nextLine().trim());
+        while(input.isEmpty()){
+            input = sc.nextLine().trim();
+        }
+        myPc.setEyes(input);
+        input = "";
         System.out.print("Skin: ");
-        myPc.setSkin(sc.nextLine().trim());
+        while(input.isEmpty()){
+            input = sc.nextLine().trim();
+        }
+        myPc.setSkin(input);
+        input = "";
         System.out.print("Hair: ");
-        myPc.setHair(sc.nextLine().trim());
+        while(input.isEmpty()){
+            input = sc.nextLine().trim();
+        }
+        myPc.setHair(input);
         System.out.println("Choose your Alignment:");
         MenuPrinter.printAlignmentsList();
         while (myPc.getAlignment() == null) {
@@ -916,23 +934,23 @@ public class App {
         }
         if (ownedArmor != null) {
             System.out.print("\nYou own a " + ownedArmor + ". Do you want to equip it? (Y/N): ");
-            String input = sc.nextLine().trim().toUpperCase();
-            while (!input.equals("Y") && !input.equals("N")) {
-                System.out.print("Invalid input. Please type Y or N: ");
-                input = sc.nextLine().trim().toUpperCase();
+            String select = sc.nextLine().trim().toUpperCase();
+            while (!select.equals("Y") && !select.equals("N")) {
+                System.out.print("Invalid select. Please type Y or N: ");
+                select = sc.nextLine().trim().toUpperCase();
             }
-            if (input.equals("Y")) {
+            if (select.equals("Y")) {
                 myPc.setEquippedArmor(ownedArmor);
             }
         }
         if (ownsShield) {
             System.out.print("\nYou own a Shield. Do you want to equip it? (Y/N): ");
-            String input = sc.nextLine().trim().toUpperCase();
-            while (!input.equals("Y") && !input.equals("N")) {
-                System.out.print("Invalid input. Please type Y or N: ");
-                input = sc.nextLine().trim().toUpperCase();
+            String select = sc.nextLine().trim().toUpperCase();
+            while (!select.equals("Y") && !select.equals("N")) {
+                System.out.print("Invalid select. Please type Y or N: ");
+                select = sc.nextLine().trim().toUpperCase();
             }
-            if (input.equals("Y")) {
+            if (select.equals("Y")) {
                 myPc.setShieldEquipped(true);
             }
         }
@@ -942,12 +960,12 @@ public class App {
         MenuPrinter.printCharacter(myPc);
 
         System.out.print("Do you want to save this character? (Y/N): ");
-        String input = sc.nextLine().trim().toUpperCase();
-        while (!input.trim().equalsIgnoreCase("Y") && !input.trim().equalsIgnoreCase("N")) {
-            System.out.print("Invalid input. Please type Y or N: ");
-            input = sc.nextLine().trim().toUpperCase();
+        String select = sc.nextLine().trim().toUpperCase();
+        while (!select.trim().equalsIgnoreCase("Y") && !select.trim().equalsIgnoreCase("N")) {
+            System.out.print("Invalid select. Please type Y or N: ");
+            select = sc.nextLine().trim().toUpperCase();
         }
-        if (input.equals("Y")) {
+        if (select.equals("Y")) {
             String safeName = myPc.getName().replaceAll("[^a-zA-Z0-9.-]", "_");
             String fileName = safeName + ".dat";
             myPc.saveCharacter(fileName);
