@@ -17,7 +17,11 @@ public class Sage extends Background{
 
     @Override
     public void applyEquipment(List<String> equipment) {
-        String[] items = {"Bottle of black ink", "Quill", "Small knife", "Letter from a dead colleague posing a question you have not yet been able to answer", "Common clothes", "Pouch with 10gp"};
+        String[] items = {
+                "Bottle of black ink", "Quill", "Small knife",
+                "Letter from a dead colleague posing a question you have not yet been able to answer",
+                "Common clothes", "Pouch with 10gp"
+        };
         addBonus(items, equipment);
     }
 

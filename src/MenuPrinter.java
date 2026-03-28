@@ -26,65 +26,75 @@ public class MenuPrinter {
     public static final String[] BARD_CANTRIPS  = {
             "Friends", "Vicious Mockery", "True Strike",
             "Minor Illusion", "Light", "Dancing Lights",
-            "Mage Hand", "Message", "Prestidigitation", "Mending"
+            "Mage Hand", "Message", "Prestidigitation", "Mending", "Blade Ward"
     };
     public static final String[] BARD_SPELLS_LVL1 = {
-            "Animal Friendship", "Feather Fall", "Charm Person",
-            "Cure Wounds", "Identify", "Detect Magic", "Thunderwave",
-            "Healing Word", "Tasha's Hideous Laughter", "Sleep"
+            "Animal Friendship", "Bane", "Charm Person", "Comprehend Languages",
+            "Cure Wounds", "Detect Magic", "Disguise self", "Dissonant Whispers",
+            "Faerie Fire", "Feather Fall", "Healing Word", "Heroism",
+            "Identify", "Illusory Script", "Longstrider", "Silent Image", "Sleep",
+            "Speak with Animals", "Tasha's Hideous Laughter", "Thunderwave", "Unseen Servant"
+
     };
 
     public static final String[] CLERIC_CANTRIPS = {
-            "Sacred Flame", "Guidance", "Light", "Resistance",
-            "Mending", "Spare the Dying", "Thaumaturgy"
+            "Guidance", "Light", "Mending", "Resistance", "Sacred Flame",
+            "Spare the Dying", "Thaumaturgy"
     };
     public static final String[] CLERIC_SPELLS_LVL1 = {
-            "Bless", "Command", "Cure Wounds", "Guiding Bolt",
-            "Detect Magic", "Inflict Wounds", "Healing Word",
-            "Protection from Evil and Good", "Sanctuary", "Shield of Faith"
+            "Bane", "Bless", "Command", "Create and Destroy Water",
+            "Cure Wounds", "Detect Evil and Good", "Detect Magic",
+            "Detect Poison and Disease", "Guiding Bolt", "Healing Word",
+            "Inflict Wounds", "Protection from Evil and Good", "Purify Food and Drink",
+            "Sanctuary", "Shield of Faith"
     };
 
     public static final String[] DRUID_CANTRIPS = {
-            "Druidcraft", "Thorn Whip", "Guidance", "Produce Flame",
-            "Shillelagh", "Resistance", "Mending", "Poison Spray"
+            "Druidcraft", "Guidance", "Mending", "Poison Spray", "Produce Flame",
+            "Resistance", "Shillelagh", "Thorn Whip"
     };
     public static final String[] DRUID_SPELLS_LVL1 = {
-            "Animal Friendship", "Goodberry", "Cure Wounds",
-            "Detect Magic", "Entangle", "Thunderwave", "Healing Word",
-            "Speak with Animals", "Purify Food and Drink"
+            "Animal Friendship", "Charm Person", "Create and Destroy Water",
+            "Cure Wounds", "Detect Magic", "Detect Poison and Disease",
+            "Entangle", "Faerie Fire", "Fog Cloud", "Goodberry","Healing Word", "Jump",
+            "Longstrider", "Purify Food and Drink", "Speak with Animals","Thunderwave"
     };
 
     public static final String[] SORCERER_CANTRIPS = {
-            "True Strike", "Fire Bolt", "Acid Splash", "Minor Illusion",
-            "Light", "Dancing Lights", "Mage Hand", "Message", "Prestidigitation",
-            "Ray of Frost", "Mending", "Poison Spray", "Shocking Grasp", "Chill Touch"
+            "Acid Splash", "Blade Ward", "Chill Touch", "Dancing Lights",
+            "Fire Bolt", "Friends", "Light", "Mage Hand", "Mending", "Message",
+            "Minor Illusion", "Poison Spray", "Prestidigitation", "Ray of Frost",
+            "Shocking Grasp", "True Strike"
     };
     public static final String[] SORCERER_SPELLS_LVL1 = {
-            "Mage Armor", "Feather Fall", "Charm Person", "Magic Missile",
-            "Silent Image", "Burning Hands", "Thunderwave", "Shield", "Sleep",
-            "Color Spray"
+            "Burning Hands", "Charm Person", "Chromatic Orb", "Color Spray",
+            "Comprehend Languages", "Detect Magic", "Disguise Self", "Expeditious Retreat",
+            "False Life", "Feather Fall", "Fog Cloud", "Jump", "Mage Armor", "Magic Missile",
+            "Ray of Sickness", "Shield", "Silent Image", "Sleep", "Thunderwave", "Witch Bolt"
     };
 
     public static final String[] WARLOCK_CANTRIPS = {
-            "True Strike", "Eldritch Blast", "Minor Illusion",
-            "Mage Hand", "Prestidigitation", "Poison Spray", "Chill Touch"
+            "Blade Ward", "Chill Touch", "Eldrich Blast", "Friends", "Mage Hand",
+            "Minor Illusion", "Poison Spray", "Prestidigitation", "True Strike"
     };
     public static final String[] WARLOCK_SPELLS_LVL1 = {
-            "Armor of Agathys", "Arms of Hadar", "Charm Person",
-            "Comprehend Languages", "Expeditious Retreat", "Hellish Rebuke",
-            "Hex", "Protection from Evil and Good","Illusory Script", "Unseen Servant"
+            "Armor of Agathys", "Arms of Hadar", "Charm Person", "Comprehend Languages",
+            "Expeditious Retreat", "Hellish Rebuke", "Hex", "Illusory Script", "Protection from Evil and Good",
+            "Unseen Servant", "Witch Bolt"
     };
 
     public static final String[] WIZARD_CANTRIPS = {
-            "True Strike", "Fire Bolt", "Acid Splash", "Minor Illusion",
-            "Light", "Dancing Lights", "Mage Hand", "Message",
-            "Prestidigitation", "Ray of Frost", "Mending", "Poison Spray",
-            "Shocking Grasp", "Chill Touch"
+            "Acid Splash", "Blade Ward", "Chill Touch", "Dancing Lights", "Fire Bolt",
+            "Friends", "Light", "Mage Hand", "Mending", "Message", "Minor Illusion", "Poison Spray",
+            "Prestidigitation" ,"Ray of Frost", "Shocking Grasp", "True Strike"
     };
     public static final String[] WIZARD_SPELLS_LVL1 = {
-            "Mage Armor", "Feather Fall", "Charm Person", "Magic Missile",
-            "Identify", "Silent Image", "Detect Magic", "Burning Hands",
-            "Thunderwave", "Shield", "Sleep"
+            "Alarm", "Burning Hands", "Charm Person", "Chromatic Orb", "Color Spray",
+            "Comprehend Languages", "Disguise Self", "False Life", "Feather Fall", "Find Familiar",
+            "Fog Cloud", "Grease", "Identify", "Illusory Script", "Jump", "Longstrider",
+            "Mage Armor", "Magic Missile", "Protection from Evil and Good", "Ray of Sickness",
+            "Shield", "Silent Image", "Sleep", "Tasha's Hideous Laughter", "Tenser's Floating Disk",
+            "Thunderwave", "Unseen Servant", "Witch Bolt"
     };
 
     public static final String[] LANGUAGES = {
@@ -112,12 +122,38 @@ public class MenuPrinter {
             "Performance", "Persuasion", "Religion", "Sleight of Hand",
             "Stealth", "Survival"
     };
+    public static final String[] SIMPLE_MELEE_WEAPONS = {
+            "Club", "Dagger", "Greatclub", "Handaxe", "Javelin",
+            "Light hammer", "Mace", "Quarterstaff", "Sickle",
+            "Spear", "Unarmed strike"
+    };
+    public static final String[] SIMPLE_RANGED_WEAPONS = {
+            "Crossbow, light", "Dart", "Shortbow", "Sling"
+    };
+    public static final String[] MARTIAL_MELEE_WEAPONS = {
+            "Battleaxe", "Flail", "Glaive", "Greataxe", "Greatsword",
+            "Halberd", "Lance", "Longsword", "Maul", "Morningstar",
+            "Pike", "Rapier", "Scimitar", "Shortsword", "Trident",
+            "War pick", "Warhammer", "Whip"
+    };
+    public static final String[] MARTIAL_RANGED_WEAPONS = {
+            "Blowgun", "Crossbow", "Crossbow", "Longbow", "Net"
+    };
     public static final String[] ARTISAN_TOOLS = {
-            "Alchemist's supplies", "Brewer's supplies", "Carpenter's tools",
-            "Cartographer's tools", "Cobbler's tools", "Cook's utensils",
+            "Alchemist's supplies", "Brewer's supplies", "Calligrapher's Supplies",
+            "Carpenter's tools", "Cartographer's tools", "Cobbler's tools", "Cook's utensils",
             "Glassblower's tools", "Jeweler's tools", "Leatherworker's tools",
             "Mason's tools", "Painter's supplies", "Potter's tools",
             "Smith's tools", "Tinker's tools", "Weaver's tools", "Woodcarver's tools"
+    };
+    public static final String[] ARCANE_FOCUSES = {
+            "Crystal", "Orb", "Road", "Staff", "Wand"
+    };
+    public static final String[] DRUIDIC_FOCUSES = {
+            "Spring of mistletoe", "Totem", "Wooden staff", "Yew wand"
+    };
+    public static final String[] HOLY_SYMBOLS = {
+            "Amulet", "Emblem", "Reliquary"
     };
     public static final String[] GAMING_SETS = {
             "Dice set", "Dragonchess set", "Playing card set", "Three-Dragon Ante set"
@@ -403,5 +439,13 @@ public class MenuPrinter {
             System.out.println("You are not a spellcaster.");
         }
         System.out.println("===================================================\n");
+    }
+
+    // --- UTILITIES ---
+    public static String[] merge(String[] a, String[] b){
+        String[] result = new String[a.length + b.length];
+        System.arraycopy(a, 0, result, 0, a.length);
+        System.arraycopy(b, 0, result, a.length, b.length);
+        return result;
     }
 }

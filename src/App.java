@@ -48,7 +48,7 @@ public class App {
             System.out.println();
 
             if (choice.equalsIgnoreCase("Dwarf")) {
-                System.out.println("\nDwarves are renowned craftsmen. Choose your artisan's tool proficiency:");
+                System.out.println("Dwarves are renowned craftsmen. Choose your artisan's tool proficiency:");
                 String[] dwarvenTools = {"Smith's tools", "Brewer's supplies", "Mason's tools"};
                 multipleChoice(1, myPc, dwarvenTools, sc, "TOOL_PROFICIENCY");
 
@@ -203,10 +203,7 @@ public class App {
                     myPc.addWeapon("Greataxe");
                 }
                 else {
-                    System.out.println("Choose one of the following weapons:");
-                    MenuPrinter.printMartialMeleeWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.MARTIAL_MELEE_WEAPONS, sc, "WEAPON");
                 }
 
                 System.out.println("[a] Two handaxes / [b] Any simple weapon");
@@ -217,11 +214,7 @@ public class App {
                     myPc.addWeapon("Two handaxes");
                 }
                 else {
-                    System.out.println("Choose one of the following weapons:");
-                    MenuPrinter.printSimpleMeleeWeapons();
-                    MenuPrinter.printSimpleRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.merge(MenuPrinter.SIMPLE_MELEE_WEAPONS, MenuPrinter.SIMPLE_RANGED_WEAPONS), sc, "WEAPON");
                 }
             }
             else if (choice.equalsIgnoreCase("Bard")) {
@@ -239,11 +232,7 @@ public class App {
                     myPc.addWeapon("Longsword");
                 }
                 else {
-                    System.out.println("Choose one of the following weapons:");
-                    MenuPrinter.printSimpleMeleeWeapons();
-                    MenuPrinter.printSimpleRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.merge(MenuPrinter.SIMPLE_MELEE_WEAPONS, MenuPrinter.SIMPLE_RANGED_WEAPONS), sc, "WEAPON");
                 }
 
                 System.out.println("[a] Diplomat's pack / [b] Entertainer's pack");
@@ -261,9 +250,7 @@ public class App {
                     myPc.addEquipment("Lute");
                 }
                 else {
-                    System.out.println("Choose one of the following musical instruments:");
-                    MenuPrinter.printMusicalInstrumentsList();
-                    myPc.addEquipment(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.MUSICAL_INSTRUMENTS, sc, "EQUIPMENT");
                 }
 
                 multipleChoice(2, myPc, MenuPrinter.BARD_CANTRIPS, sc, "SPELL");
@@ -274,25 +261,43 @@ public class App {
                 multipleChoice(2, myPc, clericSkills, sc, "SKILL");
 
                 System.out.println("\nEvery adventurer needs gear to survive. Let's pack your starting equipment.");
-                System.out.println("[a] Mace / [b] Warhammer (if proficient)");
-                String eq1 = getValidMenuChoice(sc, 2);
-                if (eq1.equals("a")) {
+                if(myPc.getWeaponProficiencies().contains("Martial weapons") || myPc.getWeaponProficiencies().contains("Warhammer")){
+                    System.out.println("[a] Mace / [b] Warhammer");
+                    String eq1 = getValidMenuChoice(sc, 2);
+                    if (eq1.equals("a")) {
+                        myPc.addWeapon("Mace");
+                    }
+                    else {
+                        myPc.addWeapon("Warhammer");
+                    }
+                }
+                else{
                     myPc.addWeapon("Mace");
                 }
-                else {
-                    myPc.addWeapon("Warhammer");
-                }
 
-                System.out.println("[a] Scale mail / [b] Leather armor / [c] Chain mail (if proficient)");
-                String eq2 = getValidMenuChoice(sc, 3);
-                if (eq2.equals("a")) {
-                    myPc.addArmor("Scale mail");
+
+                if(myPc.getArmorProficiencies().contains("Heavy Armor") || myPc.getArmorProficiencies().contains("Chain mail")){
+                    System.out.println("[a] Scale mail / [b] Leather armor / [c] Chain mail");
+                    String eq2 = getValidMenuChoice(sc, 3);
+                    if (eq2.equals("a")) {
+                        myPc.addArmor("Scale mail");
+                    }
+                    else if (eq2.equals("b")) {
+                        myPc.addArmor("Leather");
+                    }
+                    else {
+                        myPc.addArmor("Chain mail");
+                    }
                 }
-                else if (eq2.equals("b")) {
-                    myPc.addArmor("Leather");
-                }
-                else {
-                    myPc.addArmor("Chain mail");
+                else{
+                    System.out.println("[a] Scale mail / [b] Leather armor");
+                    String eq2 = getValidMenuChoice(sc, 2);
+                    if (eq2.equals("a")) {
+                        myPc.addArmor("Scale mail");
+                    }
+                    else {
+                        myPc.addArmor("Leather");
+                    }
                 }
 
                 System.out.println("[a] Light crossbow and 20 bolts / [b] Any simple weapon");
@@ -301,12 +306,10 @@ public class App {
                     myPc.addWeapon("Light crossbow and 20 bolts");
                 }
                 else {
-                    System.out.println("Choose one of the following weapons:");
-                    MenuPrinter.printSimpleMeleeWeapons();
-                    MenuPrinter.printSimpleRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.merge(MenuPrinter.SIMPLE_MELEE_WEAPONS, MenuPrinter.SIMPLE_RANGED_WEAPONS), sc, "WEAPON");
                 }
+
+                multipleChoice(1, myPc, MenuPrinter.HOLY_SYMBOLS, sc, "EQUIPMENT");
 
                 System.out.println("[a] Priest's pack / [b] Explorer's pack");
                 String eq4 = getValidMenuChoice(sc, 2);
@@ -369,11 +372,7 @@ public class App {
                     myPc.addArmor("Shield");
                 }
                 else {
-                    System.out.println("Choose one of the following weapons:");
-                    MenuPrinter.printSimpleMeleeWeapons();
-                    MenuPrinter.printSimpleRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.merge(MenuPrinter.SIMPLE_MELEE_WEAPONS, MenuPrinter.SIMPLE_RANGED_WEAPONS), sc, "WEAPON");
                 }
 
                 System.out.println("[a] Scimitar / [b] Any simple melee weapon");
@@ -382,11 +381,10 @@ public class App {
                     myPc.addWeapon("Scimitar");
                 }
                 else {
-                    System.out.println("Choose one of the following weapons:");
-                    MenuPrinter.printSimpleMeleeWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.SIMPLE_MELEE_WEAPONS, sc, "WEAPON");
                 }
+
+                multipleChoice(1, myPc, MenuPrinter.DRUIDIC_FOCUSES, sc, "EQUIPMENT");
 
                 multipleChoice(2, myPc, MenuPrinter.DRUID_CANTRIPS, sc, "SPELL");
                 multipleChoice(4, myPc, MenuPrinter.DRUID_SPELLS_LVL1, sc, "SPELL");
@@ -411,21 +409,11 @@ public class App {
                 System.out.println("[a] Martial weapon and shield / [b] Two martial weapons");
                 String eq2 = getValidMenuChoice(sc, 2);
                 if (eq2.equals("a")) {
-                    System.out.println("Choose the martial weapon:");
-                    MenuPrinter.printMartialMeleeWeapons();
-                    MenuPrinter.printMartialRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
                     myPc.addArmor("Shield");
+                    multipleChoice(1, myPc, MenuPrinter.merge(MenuPrinter.MARTIAL_MELEE_WEAPONS, MenuPrinter.MARTIAL_RANGED_WEAPONS), sc, "WEAPON");
                 }
                 else {
-                    System.out.println("Choose the first martial weapon:");
-                    MenuPrinter.printMartialMeleeWeapons();
-                    MenuPrinter.printMartialRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
-                    System.out.println("Choose the second martial weapon:");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(2, myPc, MenuPrinter.merge(MenuPrinter.MARTIAL_MELEE_WEAPONS, MenuPrinter.MARTIAL_RANGED_WEAPONS), sc, "WEAPON");
                 }
 
                 System.out.println("[a] Light crossbow and 20 bolts / [b] Two handaxes");
@@ -459,18 +447,10 @@ public class App {
                     myPc.addWeapon("Shortsword");
                 }
                 else {
-                    System.out.println("Choose one of the following weapons:");
-                    MenuPrinter.printSimpleMeleeWeapons();
-                    MenuPrinter.printSimpleRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.merge(MenuPrinter.SIMPLE_MELEE_WEAPONS, MenuPrinter.SIMPLE_RANGED_WEAPONS), sc, "WEAPON");
                 }
 
-                System.out.println("Choose proficiency in one artisan's tool or musical instrument:");
-                String[] monkTools = new String[MenuPrinter.ARTISAN_TOOLS.length + MenuPrinter.MUSICAL_INSTRUMENTS.length];
-                System.arraycopy(MenuPrinter.ARTISAN_TOOLS, 0, monkTools, 0, MenuPrinter.ARTISAN_TOOLS.length);
-                System.arraycopy(MenuPrinter.MUSICAL_INSTRUMENTS, 0, monkTools, MenuPrinter.ARTISAN_TOOLS.length, MenuPrinter.MUSICAL_INSTRUMENTS.length);
-                multipleChoice(1, myPc, monkTools, sc, "TOOL_PROFICIENCY");
+                multipleChoice(1, myPc, MenuPrinter.merge(MenuPrinter.ARTISAN_TOOLS, MenuPrinter.MUSICAL_INSTRUMENTS), sc, "TOOL_PROFICIENCY");
 
                 System.out.println("[a] Dungeoneer's pack / [b] Explorer's pack");
                 String eq2 = getValidMenuChoice(sc, 2);
@@ -491,21 +471,11 @@ public class App {
                 System.out.println("[a] Martial weapon and shield / [b] Two martial weapons");
                 String eq1 = getValidMenuChoice(sc, 2);
                 if (eq1.equals("a")) {
-                    System.out.println("Choose the martial weapon:");
-                    MenuPrinter.printMartialMeleeWeapons();
-                    MenuPrinter.printMartialRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
                     myPc.addArmor("Shield");
+                    multipleChoice(1, myPc, MenuPrinter.merge(MenuPrinter.MARTIAL_MELEE_WEAPONS, MenuPrinter.MARTIAL_RANGED_WEAPONS), sc, "WEAPON");
                 }
                 else {
-                    System.out.println("Choose the first martial weapon:");
-                    MenuPrinter.printMartialMeleeWeapons();
-                    MenuPrinter.printMartialRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
-                    System.out.println("Choose the second martial weapon:");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(2, myPc, MenuPrinter.merge(MenuPrinter.MARTIAL_MELEE_WEAPONS, MenuPrinter.MARTIAL_RANGED_WEAPONS), sc, "WEAPON");
                 }
 
                 System.out.println("[a] Five javelins / [b] Any simple melee weapon");
@@ -514,11 +484,10 @@ public class App {
                     myPc.addWeapon("Five javelins");
                 }
                 else {
-                    System.out.println("Choose one of the following weapons:");
-                    MenuPrinter.printSimpleMeleeWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.SIMPLE_MELEE_WEAPONS, sc, "WEAPON");
                 }
+
+                multipleChoice(1, myPc, MenuPrinter.HOLY_SYMBOLS, sc, "EQUIPMENT");
 
                 System.out.println("[a] Priest's pack / [b] Explorer's pack");
                 String eq3 = getValidMenuChoice(sc, 2);
@@ -548,16 +517,10 @@ public class App {
                 System.out.println("[a] Two shortswords / [b] Two simple melee weapons");
                 String eq2 = getValidMenuChoice(sc, 2);
                 if (eq2.equals("a")) {
-                    myPc.addWeapon("Shortsword");
-                    myPc.addWeapon("Shortsword");
+                    myPc.addWeapon("2 Shortswords");
                 }
                 else {
-                    System.out.println("Choose the first simple melee weapon:");
-                    MenuPrinter.printSimpleMeleeWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
-                    System.out.println("Choose the second simple melee weapon:");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(2, myPc, MenuPrinter.SIMPLE_MELEE_WEAPONS, sc, "WEAPON");
                 }
 
                 System.out.println("[a] Dungeoneer's pack / [b] Explorer's pack");
@@ -619,20 +582,16 @@ public class App {
                     myPc.addWeapon("Light crossbow and 20 bolts");
                 }
                 else {
-                    System.out.println("Choose one of the following weapons:");
-                    MenuPrinter.printSimpleMeleeWeapons();
-                    MenuPrinter.printSimpleRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.merge(MenuPrinter.SIMPLE_MELEE_WEAPONS, MenuPrinter.SIMPLE_RANGED_WEAPONS), sc, "WEAPON");
                 }
 
-                System.out.println("[a] Component pouch / [b] Arcane focus");
+                System.out.println("[a] Component pouch / [b] Arcane Focus");
                 String eq2 = getValidMenuChoice(sc, 2);
                 if (eq2.equals("a")) {
                     myPc.addEquipment("Component pouch");
                 }
                 else {
-                    myPc.addEquipment("Arcane focus");
+                    multipleChoice(1, myPc, MenuPrinter.ARCANE_FOCUSES, sc, "EQUIPMENT");
                 }
 
                 System.out.println("[a] Dungeoneer's pack / [b] Explorer's pack");
@@ -689,20 +648,16 @@ public class App {
                     myPc.addWeapon("Light crossbow and 20 bolts");
                 }
                 else {
-                    System.out.println("Choose one of the following weapons:");
-                    MenuPrinter.printSimpleMeleeWeapons();
-                    MenuPrinter.printSimpleRangedWeapons();
-                    System.out.print("\nEnter your weapon of choice: ");
-                    myPc.addWeapon(sc.nextLine().trim());
+                    multipleChoice(1, myPc, MenuPrinter.merge(MenuPrinter.SIMPLE_MELEE_WEAPONS, MenuPrinter.SIMPLE_RANGED_WEAPONS), sc, "WEAPON");
                 }
 
-                System.out.println("[a] Component pouch / [b] Arcane focus");
+                System.out.println("[a] Component pouch / [b] Arcane Focus");
                 String eq2 = getValidMenuChoice(sc, 2);
                 if (eq2.equals("a")) {
                     myPc.addEquipment("Component pouch");
                 }
                 else {
-                    myPc.addEquipment("Arcane focus");
+                    multipleChoice(1, myPc, MenuPrinter.ARCANE_FOCUSES, sc, "EQUIPMENT");
                 }
 
                 System.out.println("[a] Scholar's pack / [b] Dungeoneer's pack");
@@ -751,13 +706,13 @@ public class App {
                     myPc.addWeapon("Dagger");
                 }
 
-                System.out.println("[a] Component pouch / [b] Arcane focus");
+                System.out.println("[a] Component pouch / [b] Arcane Focus");
                 String eq2 = getValidMenuChoice(sc, 2);
                 if (eq2.equals("a")) {
                     myPc.addEquipment("Component pouch");
                 }
                 else {
-                    myPc.addEquipment("Arcane focus");
+                    multipleChoice(1, myPc, MenuPrinter.ARCANE_FOCUSES, sc, "EQUIPMENT");
                 }
 
                 System.out.println("[a] Scholar's pack / [b] Explorer's pack");
@@ -789,6 +744,7 @@ public class App {
 
             if (choice.equalsIgnoreCase("Acolyte")) {
                 multipleChoice(2, myPc, MenuPrinter.LANGUAGES, sc, "LANGUAGE");
+                multipleChoice(1, myPc, MenuPrinter.HOLY_SYMBOLS, sc, "EQUIPMENT");
                 myPc.setBackground(new Acolyte());
             }
             else if (choice.equalsIgnoreCase("Charlatan")) {

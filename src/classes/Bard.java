@@ -42,7 +42,6 @@ public class Bard extends CharacterClass {
     @Override
     public void applyClassBonuses(List<String> classBonuses) {
         classBonuses.add("Bardic inspiration");
-        classBonuses.add("Spells");
     }
 
     @Override

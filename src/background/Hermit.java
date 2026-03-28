@@ -21,8 +21,10 @@ public class Hermit extends Background{
     }
     @Override
     public void applyEquipment(List<String> equipment) {
-        String[] items = {"Scrolls case stuffed full of notes of your studies or prayers", "Winter blanket",
-                "Common clothes", "Herbalism kit", "Pouch with 5gp"};
+        String[] items = {
+                "Scrolls case stuffed full of notes of your studies or prayers", "Winter blanket",
+                "Common clothes", "Herbalism kit", "Pouch with 5gp"
+        };
         addBonus(items, equipment);
     }
 

@@ -23,8 +23,10 @@ public class Urchin extends Background{
 
     @Override
     public void applyEquipment(List<String> equipment) {
-        String[] items = {"Small knife", "Map of the city you grew up in", "Pet mouse",
-                "Token to remember your parents", "Common clothes", "Pouch with 10gp"};
+        String[] items = {
+                "Small knife", "Map of the city you grew up in", "Pet mouse",
+                "Token to remember your parents", "Common clothes", "Pouch with 10gp"
+        };
         addBonus(items, equipment);
     }
 

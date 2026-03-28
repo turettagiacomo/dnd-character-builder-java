@@ -34,12 +34,6 @@ public class Cleric extends CharacterClass {
     }
 
     @Override
-    public void applyEquipment(List<String> equipment) {
-        String[] items = {"Holy symbol"};
-        addBonus(items, equipment);
-    }
-
-    @Override
     public void applyArmor(List<String> armor){
         String[] items = {"Shield"};
         addBonus(items, armor);
@@ -47,7 +41,6 @@ public class Cleric extends CharacterClass {
 
     @Override
     public void applyClassBonuses(List<String> classBonuses) {
-        classBonuses.add("Spells (Wisdom)");
         classBonuses.add("Divine domain");
         this.subclass.applySubclassBonuses(classBonuses);
     }

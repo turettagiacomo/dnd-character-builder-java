@@ -17,7 +17,7 @@ public class Acolyte extends Background{
 
     @Override
     public void applyEquipment(List<String> equipment) {
-        String[] items = {"Holy symbol", "5 sticks of incense", "Vestments", "Common clothes", "Belt pouch with 15gp"};
+        String[] items = {"5 sticks of incense", "Vestments", "Common clothes", "Belt pouch with 15gp"};
         addBonus(items, equipment);
     }
 

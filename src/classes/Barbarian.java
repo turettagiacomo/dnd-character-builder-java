@@ -42,7 +42,7 @@ public class Barbarian extends CharacterClass {
 
     @Override
     public void applyClassBonuses(List<String> classBonuses){
-        classBonuses.add("Rage: ");
-        classBonuses.add("Unarmored defence: ");
+        classBonuses.add("Rage");
+        classBonuses.add("Unarmored defence");
     }
 }

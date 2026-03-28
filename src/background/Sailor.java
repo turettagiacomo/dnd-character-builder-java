@@ -23,7 +23,9 @@ public class Sailor extends Background{
 
     @Override
     public void applyEquipment(List<String> equipment) {
-        String[] items = {"Belaying pin (club)", "50 feet of silk rope", "Lucky charm", "Common clothes", "Pouch with 10gp"};
+        String[] items = {
+                "Belaying pin (club)", "50 feet of silk rope", "Lucky charm", "Common clothes", "Pouch with 10gp"
+        };
         addBonus(items, equipment);
     }
 

@@ -29,7 +29,6 @@ public class Wizard extends CharacterClass {
 
     @Override
     public void applyClassBonuses(List<String> classBonuses) {
-        classBonuses.add("Spells (Intelligence)");
         classBonuses.add("Arcane Recovery");
     }
 

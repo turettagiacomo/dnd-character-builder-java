@@ -28,12 +28,6 @@ public class Paladin extends CharacterClass {
     }
 
     @Override
-    public void applyEquipment(List<String> equipment) {
-        String[] items = {"Holy symbol"};
-        addBonus(items, equipment);
-    }
-
-    @Override
     public void applyArmor(List<String> armor) {
         String[] items = {"Chain mail"};
         addBonus(items, armor);

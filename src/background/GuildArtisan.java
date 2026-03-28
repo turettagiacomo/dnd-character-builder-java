@@ -16,7 +16,9 @@ public class GuildArtisan extends Background{
     }
     @Override
     public void applyEquipment(List<String> equipment) {
-        String[] items = {"Letter of introduction from your guild", "Traveller's clothes", "Pouch with 15gp"};
+        String[] items = {
+                "Letter of introduction from your guild", "Traveller's clothes", "Pouch with 15gp"
+        };
         addBonus(items, equipment);
     }
 

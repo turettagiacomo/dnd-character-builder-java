@@ -41,6 +41,6 @@ public class Ranger extends CharacterClass {
 
     @Override
     public Ability getSpellcastingAbility() {
-        return Ability.WISDOM; // (Starting at lvl 2)
-    }
+        return Ability.WISDOM;
+    } // (Starting at lvl 2
 }

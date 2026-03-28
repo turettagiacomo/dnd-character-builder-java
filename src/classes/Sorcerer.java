@@ -7,10 +7,10 @@ import classes.subclasses.Subclass;
 import java.util.List;
 
 public class Sorcerer extends CharacterClass {
-    private Subclass subclassScelta;
+    private final Subclass subclass;
     public Sorcerer(SourcererSubclass subclassInput){
         super("Sorcerer", 2, "1d6", 6);
-        this.subclassScelta = (Subclass) subclassInput;
+        this.subclass = (Subclass) subclassInput;
     }
 
     @Override
@@ -33,8 +33,7 @@ public class Sorcerer extends CharacterClass {
 
     @Override
     public void applyClassBonuses(List<String> classBonuses) {
-        classBonuses.add("Spells");
-        this.subclassScelta.applySubclassBonuses(classBonuses);
+        this.subclass.applySubclassBonuses(classBonuses);
     }
 
     @Override
@@ -44,6 +43,6 @@ public class Sorcerer extends CharacterClass {
 
     @Override
     public void applyResistances(List<String> resistances){
-        this.subclassScelta.applyResistances(resistances);
+        this.subclass.applyResistances(resistances);
     }
 }

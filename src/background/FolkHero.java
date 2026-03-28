@@ -22,7 +22,7 @@ public class FolkHero extends Background{
 
     @Override
     public void applyEquipment(List<String> equipment) {
-        String[] items = {"A set of artisan's tools", "Shovel", "Iron pot", "Common clothes", "Pouch with 10gp"};
+        String[] items = {"Shovel", "Iron pot", "Common clothes", "Pouch with 10gp"};
         addBonus(items, equipment);
     }
 

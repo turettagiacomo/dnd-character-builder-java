@@ -36,7 +36,7 @@ public class Druid extends CharacterClass {
 
     @Override
     public void applyEquipment(List<String> equipment) {
-        String[] items = {"Explorer's pack", "Druidic focus"};
+        String[] items = {"Explorer's pack"};
         addBonus(items, equipment);
     }
 
