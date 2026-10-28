@@ -934,23 +934,13 @@ public class App {
         }
         if (ownedArmor != null) {
             System.out.print("\nYou own a " + ownedArmor + ". Do you want to equip it? (Y/N): ");
-            String select = sc.nextLine().trim().toUpperCase();
-            while (!select.equals("Y") && !select.equals("N")) {
-                System.out.print("Invalid select. Please type Y or N: ");
-                select = sc.nextLine().trim().toUpperCase();
-            }
-            if (select.equals("Y")) {
+            if (yesNoChoice(sc) == 'y') {
                 myPc.setEquippedArmor(ownedArmor);
             }
         }
         if (ownsShield) {
             System.out.print("\nYou own a Shield. Do you want to equip it? (Y/N): ");
-            String select = sc.nextLine().trim().toUpperCase();
-            while (!select.equals("Y") && !select.equals("N")) {
-                System.out.print("Invalid select. Please type Y or N: ");
-                select = sc.nextLine().trim().toUpperCase();
-            }
-            if (select.equals("Y")) {
+            if (yesNoChoice(sc) == 'y') {
                 myPc.setShieldEquipped(true);
             }
         }
@@ -960,12 +950,7 @@ public class App {
         MenuPrinter.printCharacter(myPc);
 
         System.out.print("Do you want to save this character? (Y/N): ");
-        String select = sc.nextLine().trim().toUpperCase();
-        while (!select.trim().equalsIgnoreCase("Y") && !select.trim().equalsIgnoreCase("N")) {
-            System.out.print("Invalid select. Please type Y or N: ");
-            select = sc.nextLine().trim().toUpperCase();
-        }
-        if (select.equals("Y")) {
+        if (yesNoChoice(sc) == 'y') {
             String safeName = myPc.getName().replaceAll("[^a-zA-Z0-9.-]", "_");
             String fileName = safeName + ".dat";
             myPc.saveCharacter(fileName);
@@ -1110,6 +1095,26 @@ public class App {
             }
         }
         return input;
+    }
+
+    /**
+     * Prompts the user to input Y/y or N/n in binary choices.
+     * @param sc The Scanner object used to read standard input.
+     * @return y if the input was Y/y, n if the input was N/n.
+     */
+    private static char yesNoChoice(Scanner sc) {
+        String input = sc.nextLine().toLowerCase();
+        boolean isValid = false;
+        while(!isValid) {
+            if(input.trim().equalsIgnoreCase("y")) {
+                return 'y';
+            }
+            else if(input.trim().equalsIgnoreCase("n")) {
+                return 'n';
+            }
+            System.out.println("Invalid value");
+        }
+        return ' ';
     }
 
     private static void assignScoresFromList(PlayerCharacter pg, Scanner sc, List<Integer> availableScores) {
