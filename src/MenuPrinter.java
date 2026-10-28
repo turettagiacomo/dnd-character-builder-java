@@ -125,7 +125,7 @@ public class MenuPrinter {
     public static final String[] SIMPLE_MELEE_WEAPONS = {
             "Club", "Dagger", "Greatclub", "Handaxe", "Javelin",
             "Light hammer", "Mace", "Quarterstaff", "Sickle",
-            "Spear", "Unarmed strike"
+            "Spear"
     };
     public static final String[] SIMPLE_RANGED_WEAPONS = {
             "Crossbow, light", "Dart", "Shortbow", "Sling"
@@ -231,7 +231,6 @@ public class MenuPrinter {
         System.out.printf(format, "Quarterstaff", "1d6 bludgeoning", "Versatile (1d8)");
         System.out.printf(format, "Sickle", "1d4 slashing", "Light");
         System.out.printf(format, "Spear", "1d6 piercing", "Thrown (20/60), versatile (1d8)");
-        System.out.printf(format, "Unarmed strike", "1 bludgeoning", "-");
     }
     public static void printSimpleRangedWeapons() {
         printWeaponHeader("Simple Ranged Weapons");
