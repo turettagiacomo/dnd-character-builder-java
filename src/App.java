@@ -1165,26 +1165,17 @@ public class App {
      */
     private static void generateRolledScores(PlayerCharacter pg, Scanner sc) {
         System.out.println("\n--- Roll Dice (4d6 drop lowest) ---");
-        List<Integer> availableScores = new ArrayList<>();
-        Random rand = new Random();
-        final int MAX_ROLLABLE = 6;
-
-        for (int i = 0; i < 6; i++) {
-            int min = 6;
-            int sum = 0;
-            for (int j = 0; j < 4; j++) {
-                int roll = rand.nextInt(MAX_ROLLABLE) + 1;
-                sum += roll;
-                if (roll < min) {
-                    min = roll;
-                }
-            }
-            availableScores.add(sum - min);
+        final int numberOfAbilitys = 6;
+        int[] availableScores = new int[6];
+        for (int i = 0; i < numberOfAbilitys; i++) {
+            availableScores[i]  = sumDicesDropLowest(diceRoller("4d6"));
         }
+        Arrays.sort(availableScores);
 
-        System.out.println("The dice gods have spoken! Your rolled scores are: " + availableScores + "\n");
+        List<Integer> avaibleScoresList = Arrays.stream(availableScores).boxed().toList();
+        System.out.println("The dice gods have spoken! Your rolled scores are: " + avaibleScoresList + "\n");
 
-        assignScoresFromList(pg, sc, availableScores);
+        assignScoresFromList(pg, sc, avaibleScoresList);
     }
 
     /**
