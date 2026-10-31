@@ -37,6 +37,11 @@ public abstract class CharacterClass implements Serializable {
         return hitPoints;
     }
 
+    public void setHitDices(int level) {
+        String[] dices = this.hitDices.split("d");
+        this.hitDices = level + "d" +  dices[1];
+    }
+
     public void addBonus(String[] elements, List<String> targetList) {
         for(String s : elements){
             if(!targetList.contains(s)){
