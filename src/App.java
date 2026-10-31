@@ -1103,7 +1103,7 @@ public class App {
      * @return y if the input was Y/y, n if the input was N/n.
      */
     private static char yesNoChoice(Scanner sc) {
-        String input = sc.nextLine().toLowerCase();
+        String input = sc.nextLine();
         boolean isValid = false;
         while(!isValid) {
             if(input.trim().equalsIgnoreCase("y")) {
