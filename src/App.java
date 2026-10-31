@@ -1121,7 +1121,7 @@ public class App {
      * @return y if the input was Y/y, n if the input was N/n.
      */
     private static char yesNoChoice(Scanner sc) {
-        String input = sc.nextLine().toLowerCase();
+        String input = sc.nextLine();
         boolean isValid = false;
         while(!isValid) {
             if(input.trim().equalsIgnoreCase("y")) {
@@ -1131,6 +1131,7 @@ public class App {
                 return 'n';
             }
             System.out.println("Invalid value");
+            input = sc.nextLine();
         }
         return ' ';
     }
@@ -1190,7 +1191,7 @@ public class App {
         }
         Arrays.sort(availableScores);
 
-        List<Integer> avaibleScoresList = Arrays.stream(availableScores).boxed().toList();
+        List<Integer> avaibleScoresList = new ArrayList<>(Arrays.stream(availableScores).boxed().toList());
         System.out.println("The dice gods have spoken! Your rolled scores are: " + avaibleScoresList + "\n");
 
         assignScoresFromList(pg, sc, avaibleScoresList);
@@ -1233,7 +1234,6 @@ public class App {
             rolls[i] = rand.nextInt(diceValue) + 1;
         }
         Arrays.sort(rolls);
-        System.out.println("The rolled values are: " + Arrays.toString(rolls));
         return rolls;
     }
 
@@ -1247,7 +1247,6 @@ public class App {
         }catch (NumberFormatException e){
             System.out.println("Invalid input. Please enter a numeric value.");
         }
-        System.out.println("I'll roll " + diceNumber + "d" + diceValue);
         return diceRoller(diceNumber, diceValue);
     }
 
