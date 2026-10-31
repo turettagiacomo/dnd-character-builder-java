@@ -1207,4 +1207,45 @@ public class App {
             }
         }
     }
+
+    private static int[] diceRoller(int diceNumber, int diceValue) {
+        int[] rolls = new int[diceNumber];
+        Random rand = new Random();
+        for(int i = 0; i < diceNumber; i++){
+            rolls[i] = rand.nextInt(diceValue) + 1;
+        }
+        Arrays.sort(rolls);
+        System.out.println("The rolled values are: " + Arrays.toString(rolls));
+        return rolls;
+    }
+
+    private static int[] diceRoller(String dice){
+        String[] diceSplitted = dice.split("d");
+        int diceNumber = 0;
+        int diceValue = 0;
+        try{
+            diceNumber = Integer.parseInt(diceSplitted[0]);
+            diceValue = Integer.parseInt(diceSplitted[1]);
+        }catch (NumberFormatException e){
+            System.out.println("Invalid input. Please enter a numeric value.");
+        }
+        System.out.println("I'll roll " + diceNumber + "d" + diceValue);
+        return diceRoller(diceNumber, diceValue);
+    }
+
+    private static int sumDices(int[] rolls){
+        int sum = 0;
+        for (int roll : rolls) {
+            sum += roll;
+        }
+        return sum;
+    }
+
+    private static int sumDicesDropLowest(int[] sortedRolls){
+        int sum = 0;
+        for (int i = 1; i < sortedRolls.length; i++) {
+            sum += sortedRolls[i];
+        }
+        return sum;
+    }
 }
