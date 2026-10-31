@@ -1113,6 +1113,7 @@ public class App {
                 return 'n';
             }
             System.out.println("Invalid value");
+            input = sc.nextLine();
         }
         return ' ';
     }
