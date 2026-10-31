@@ -956,6 +956,24 @@ public class App {
             myPc.saveCharacter(fileName);
         }
 
+        boolean wantLevelUp = false;
+        while (!wantLevelUp) {
+            System.out.println("Do you want to level up? (Y/N): ");
+            char choice = yesNoChoice(sc);
+            if (choice == 'y') {
+                myPc.setLevel(myPc.getLevel() + 1);
+                myPc.getCharacterClass().setHitDices(myPc.getLevel());  //update hit dices
+
+
+
+                System.out.println("You're now level " + myPc.getLevel());
+            }
+            else if(choice == 'n'){
+                wantLevelUp = true;
+            }
+        }
+
+
         System.out.println("\nThe sun rises outside, and " + myPc.getName() + " wakes up to a strange sound...");
         sc.close();
     }
