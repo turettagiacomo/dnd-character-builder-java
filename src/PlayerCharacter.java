@@ -138,6 +138,9 @@ public class PlayerCharacter implements Serializable {
         this.background = background;
         this.applyIntrinsicBackgroundTraits();
     }
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
     // --- SETTER PHYSICAL ---
     public void setGender(String gender) {
