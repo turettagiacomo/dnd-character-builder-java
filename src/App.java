@@ -1215,7 +1215,6 @@ public class App {
             rolls[i] = rand.nextInt(diceValue) + 1;
         }
         Arrays.sort(rolls);
-        System.out.println("The rolled values are: " + Arrays.toString(rolls));
         return rolls;
     }
 
@@ -1229,7 +1228,6 @@ public class App {
         }catch (NumberFormatException e){
             System.out.println("Invalid input. Please enter a numeric value.");
         }
-        System.out.println("I'll roll " + diceNumber + "d" + diceValue);
         return diceRoller(diceNumber, diceValue);
     }
 
