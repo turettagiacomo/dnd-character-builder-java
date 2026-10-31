@@ -1172,7 +1172,7 @@ public class App {
         }
         Arrays.sort(availableScores);
 
-        List<Integer> avaibleScoresList = Arrays.stream(availableScores).boxed().toList();
+        List<Integer> avaibleScoresList = new ArrayList<>(Arrays.stream(availableScores).boxed().toList());
         System.out.println("The dice gods have spoken! Your rolled scores are: " + avaibleScoresList + "\n");
 
         assignScoresFromList(pg, sc, avaibleScoresList);
